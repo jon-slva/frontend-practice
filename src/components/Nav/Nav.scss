@@ -5,7 +5,81 @@
 .nav {
 	display: flex;
 	justify-content: space-between;
-	// align-items: center;
-	// padding: 1rem 2rem;
+	background-color: #1a1a1a;
+	padding: 0 32px;
+	position: relative;
 
+	&__item {
+		// padding: 1rem 2rem;
+	}
+
+	&__item-link {
+		// width: 100%;
+		padding: 1rem;
+		display: block;
+	}
+
+	&__sub-item {
+		// display: none;
+	}
+}
+
+.react-submenu,
+.ui-submenu {
+	background-color: #1a1a1a;
+	position: absolute;
+	padding: 24px 32px;
+	width: 100%;
+	left: 0;
+	display: flex;
+	justify-content: center;
+	gap: 12%;
+
+	&__header {
+		font-size: 32px;
+	}
+
+	&__header2 {
+		font-size: 20px;
+	}
+
+	&__nav {
+		padding-top: 12px;
+
+		&--item {
+			font-size: 16px;
+			margin: 12px;
+		}
+	}
+}
+
+
+
+
+.fade-in {
+	animation: fadeIn 0.25s ease-in-out forwards;
+}
+
+.fade-out {
+	animation: fadeOut 0.25s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes fadeOut {
+	from {
+		opacity: 1;
+	}
+
+	to {
+		opacity: 0;
+	}
 }
