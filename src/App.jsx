@@ -4,7 +4,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.scss'
 import Home from './pages/Home/Home'
 import Nav from './components/Nav/Nav'
-
+import ErrorPage from './pages/ErrorPage/ErrorPage'
+import Apis from './pages/Apis/Apis'
 function App() {
 
 	return (
@@ -13,6 +14,8 @@ function App() {
 				<Nav />
 				<Routes>
 					<Route path="/" element={<Home />} />
+					<Route path="/apis" element={<Apis />} />
+					<Route path="*" element={<ErrorPage />} />
 				</Routes>
 			</BrowserRouter>
 		</>
