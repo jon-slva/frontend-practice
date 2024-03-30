@@ -40,7 +40,7 @@ const Nav = () => {
 			<nav className='nav-container'>
 				<ul className='nav'>
 					<li className='nav__item'>
-						<a href="" className='nav__item-link'>
+						<a href="/apis" className='nav__item-link'>
 							APIs
 						</a>
 					</li>
