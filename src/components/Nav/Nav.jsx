@@ -45,7 +45,7 @@ const Nav = () => {
 						</a>
 					</li>
 					<li className='nav__item' onMouseEnter={() => handleMenu("reactMenuOn")} onMouseLeave={() => handleMenu("reactMenuFadeTransition")}>
-						<a href="" className='nav__item-link'>
+						<a href="" className={`nav__item-link ${menuState.reactMenuOn ? "active-menu-item" : ""} `}>
 							React
 						</a>
 						{menuState.reactMenuOn && (
@@ -106,7 +106,7 @@ const Nav = () => {
 						</a>
 					</li>
 					<li className='nav__item' onMouseEnter={() => handleMenu("uiMenuOn")} onMouseLeave={() => handleMenu("uiMenuFadeTransition")}>
-						<a href="" className='nav__item-link'>
+						<a href="" className={`nav__item-link ${menuState.uiMenuOn ? "active-menu-item" : ""} `}>
 							UI Libraries
 						</a>
 						{menuState.uiMenuOn && (
