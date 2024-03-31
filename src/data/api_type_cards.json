@@ -1,0 +1,53 @@
+[
+	{
+		"thenCatchCards": [
+			{
+				"name": "Fetch API",
+				"subtitle": "with then/catch",
+				"image": "src/assets/images/api_fetch_no_async.png",
+				"description": "Fetch API with then/catch handles Promises."
+			},
+			{
+				"name": "Axios",
+				"subtitle": "with then/catch",
+				"image": "src/assets/images/api_axios_no_async.png",
+				"description": "Axios with then/catch handles Promises."
+			}
+		],
+		"categoryTitle": "Api Requests with then/catch"
+	},
+	{
+		"asyncAwaitCards": [
+			{
+				"name": "Fetch API",
+				"subtitle": "with async/await",
+				"image": "src/assets/images/api_fetch_with_async.png",
+				"description": "Fetch API with async/await for cleaner code."
+			},
+			{
+				"name": "Axios",
+				"subtitle": "with async/await",
+				"image": "src/assets/images/api_axios_with_async.png",
+				"description": "Axios with async/await for cleaner code."
+			}
+		],
+		"categoryTitle": "Api Requests with async/await"
+	},
+	{
+		"preEs6Cards": [
+			{
+				"name": "$.ajax (Pre-ES6)",
+				"subtitle": "with ajax/jQuery",
+				"image": "src/assets/images/api_pre_es6.png",
+				"description": "Pre-ES6 $.ajax method for API requests."
+			},
+			{
+				"name": "XMLHttpRequest (Pre-ES6)",
+				"subtitle": "",
+				"image": "src/assets/images/api_pre_es6.png",
+				"description": "Pre-ES6 XMLHttpRequest for API requests."
+			}
+		],
+		"categoryTitle": "Pre-ES6 Methods"
+	}
+]
