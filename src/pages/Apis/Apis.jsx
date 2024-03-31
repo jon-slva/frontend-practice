@@ -2,7 +2,6 @@ import './Apis.scss';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import apiTypes from '../../data/api_type_cards.json';
-import img from '../../assets/images/api_axios_card.png'
 
 const Apis = () => {
 	const [axiosData, setAxiosData] = useState(null);
@@ -35,6 +34,27 @@ const Apis = () => {
 			} catch (error) {
 				console.error(error);
 			}
+		}
+
+		fetchData();
+	}, []);
+
+	useEffect(function () {
+		function fetchData() {
+			fetch("https://api.publicapis.org/entries")
+				.then(function (response) {
+					if (!response.ok) {
+						throw new Error("HTTP error! status: " + response.status);
+					}
+					return response.json();
+				})
+				.then(function (data) {
+					setFetchApiData(data);
+					console.log("Fetch API", fetchApiData);
+				})
+				.catch(function (error) {
+					console.error(error);
+				});
 		}
 
 		fetchData();
