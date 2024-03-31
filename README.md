@@ -1,4 +1,10 @@
-# React + Vite
+# Frontend Practice
+
+I'm just building out this project as both practice for frontend exams, and also as a reference.
+
+## React + Vite
+
+
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 

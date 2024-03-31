@@ -5,7 +5,7 @@ import './App.scss'
 import Home from './pages/Home/Home'
 import Nav from './components/Nav/Nav'
 import ErrorPage from './pages/ErrorPage/ErrorPage'
-import Apis from './pages/Apis/Apis'
+import ApisAndPromises from './pages/ApisAndPromises/ApisAndPromises'
 function App() {
 
 	return (
@@ -14,7 +14,7 @@ function App() {
 				<Nav />
 				<Routes>
 					<Route path="/" element={<Home />} />
-					<Route path="/apis" element={<Apis />} />
+					<Route path="/apis-and-promises" element={<ApisAndPromises />} />
 					<Route path="*" element={<ErrorPage />} />
 				</Routes>
 			</BrowserRouter>
