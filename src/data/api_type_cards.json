@@ -1,17 +1,53 @@
 [
 	{
-		"name": "Pre-ES6",
-		"image": "../../assets.images/",
-		"description": "Pre-2015, when we used much more verbose requests."
+		"thenCatchCards": [
+			{
+				"name": "Fetch API",
+				"subtitle": "with then/catch",
+				"image": "src/assets/images/api_fetch_no_async.png",
+				"description": "Fetch API with then/catch handles Promises."
+			},
+			{
+				"name": "Axios",
+				"subtitle": "with then/catch",
+				"image": "src/assets/images/api_axios_no_async.png",
+				"description": "Axios with then/catch handles Promises."
+			}
+		],
+		"categoryTitle": "Api Requests with then/catch"
 	},
 	{
-		"name": "Fetch API",
-		"image": "src/assets/images/api_fetch_api_card.png",
-		"description": "This is the newer built-in method for dealing with API requests in JavaScript. It works with vanilla JavaScript and React"
+		"asyncAwaitCards": [
+			{
+				"name": "Fetch API",
+				"subtitle": "with async/await",
+				"image": "src/assets/images/api_fetch_with_async.png",
+				"description": "Fetch API with async/await for cleaner code."
+			},
+			{
+				"name": "Axios",
+				"subtitle": "with async/await",
+				"image": "src/assets/images/api_axios_with_async.png",
+				"description": "Axios with async/await for cleaner code."
+			}
+		],
+		"categoryTitle": "Api Requests with async/await"
 	},
 	{
-		"name": "Axios",
-		"image": "src/assets/images/api_axios_card.png",
-		"description": "The easiest way that I know of. Much less verbose. JSON is stringified and parsed automatically. Requests and error handling is much simpler."
+		"preEs6Cards": [
+			{
+				"name": "$.ajax (Pre-ES6)",
+				"subtitle": "with ajax/jQuery",
+				"image": "src/assets/images/api_pre_es6.png",
+				"description": "Pre-ES6 $.ajax method for API requests."
+			},
+			{
+				"name": "XMLHttpRequest (Pre-ES6)",
+				"subtitle": "",
+				"image": "src/assets/images/api_pre_es6.png",
+				"description": "Pre-ES6 XMLHttpRequest for API requests."
+			}
+		],
+		"categoryTitle": "Pre-ES6 Methods"
 	}
 ]

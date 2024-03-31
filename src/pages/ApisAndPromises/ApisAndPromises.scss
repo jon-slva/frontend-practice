@@ -1,3 +1,14 @@
+.top {
+	background-color: #2c2c2c;
+	margin: 0 2rem;
+	padding: 1rem 0;
+	border-radius: 8px;
+}
+
+.promise-toggle {
+	margin: 0 1rem;
+}
+
 .card-container {
 	display: flex;
 	flex-wrap: wrap;
@@ -19,6 +30,7 @@
 	object-fit: cover;
 
 	&__top {
+		aspect-ratio: 4 / 3;
 		flex-grow: 1;
 	}
 
@@ -28,5 +40,10 @@
 		padding: 0 1rem;
 	}
 
-	&__image {}
+	&__image {
+		aspect-ratio: 4 / 3;
+		width: 120%;
+		background-position: center;
+		background-size: 120%;
+	}
 }
