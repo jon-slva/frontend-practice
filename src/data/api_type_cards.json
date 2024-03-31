@@ -1,0 +1,17 @@
+[
+	{
+		"name": "Pre-ES6",
+		"image": "../../assets.images/",
+		"description": "Pre-2015, when we used much more verbose requests."
+	},
+	{
+		"name": "Fetch API",
+		"image": "src/assets/images/api_fetch_api_card.png",
+		"description": "This is the newer built-in method for dealing with API requests in JavaScript. It works with vanilla JavaScript and React"
+	},
+	{
+		"name": "Axios",
+		"image": "src/assets/images/api_axios_card.png",
+		"description": "The easiest way that I know of. Much less verbose. JSON is stringified and parsed automatically. Requests and error handling is much simpler."
+	}
+]
