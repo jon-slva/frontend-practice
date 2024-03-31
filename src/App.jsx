@@ -14,7 +14,7 @@ function App() {
 				<Nav />
 				<Routes>
 					<Route path="/" element={<Home />} />
-					<Route path="/apis" element={<Apis />} />
+					<Route path="/apis-and-promises" element={<Apis />} />
 					<Route path="*" element={<ErrorPage />} />
 				</Routes>
 			</BrowserRouter>
