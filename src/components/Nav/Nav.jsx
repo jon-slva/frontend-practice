@@ -40,8 +40,8 @@ const Nav = () => {
 			<nav className='nav-container'>
 				<ul className='nav'>
 					<li className='nav__item'>
-						<a href="/apis" className='nav__item-link'>
-							APIs
+						<a href="/apis-and-promises" className='nav__item-link'>
+							APIs & Promises
 						</a>
 					</li>
 					<li className='nav__item' onMouseEnter={() => handleMenu("reactMenuOn")} onMouseLeave={() => handleMenu("reactMenuFadeTransition")}>
