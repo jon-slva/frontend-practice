@@ -83,7 +83,7 @@ const ApisAndPromises = () => {
 					then/catch
 				</button>
 				<button className="promise-toggle" onClick={() => setCardToggle("pre-ES6")}>
-					pre-ES2
+					pre-ES6
 
 				</button>
 			</section>
