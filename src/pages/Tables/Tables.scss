@@ -1,0 +1,46 @@
+main {
+	padding: 0 120px;
+}
+
+table {
+	width: 80%;
+	border-collapse: collapse;
+	margin: 36px auto;
+}
+
+thead {
+	color: white;
+	position: relative;
+	z-index: 10;
+
+	&::before {
+		content: '';
+		position: absolute;
+		background-color: #1a1a1a;
+		border-radius: 8px;
+		display: block;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		z-index: -1;
+	}
+}
+
+thead th {
+	padding: 16px;
+}
+
+ol li {
+	list-style: inside decimal;
+}
+
+ol ul li {
+	list-style: inside disc;
+	padding-left: 16px;
+}
+
+.instructions {
+	width: fit-content;
+	text-align: left;
+	margin: 0 auto;
+}

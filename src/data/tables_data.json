@@ -1,0 +1,32 @@
+[
+	{
+		"name": "John Doe",
+		"email": "johndoe@gmail.com",
+		"phone": "555-555-5555",
+		"dob": "1990-01-01"
+	},
+	{
+		"name": "Jane Smith",
+		"email": "janesmith@yahoo.com",
+		"phone": "555-555-1234",
+		"dob": "1985-05-15"
+	},
+	{
+		"name": "Bob Johnson",
+		"email": "bob.johnson@hotmail.com",
+		"phone": "555-555-2468",
+		"dob": "1978-12-31"
+	},
+	{
+		"name": "Emily Davis",
+		"email": "emily.davis@outlook.com",
+		"phone": "555-555-9876",
+		"dob": "1995-07-22"
+	},
+	{
+		"name": "Tom Lee",
+		"email": "tom.lee@gmail.com",
+		"phone": "555-555-3698",
+		"dob": "1980-03-10"
+	}
+]

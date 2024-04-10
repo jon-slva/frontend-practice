@@ -6,6 +6,7 @@
 	display: flex;
 	justify-content: space-between;
 	background-color: #1a1a1a;
+	color: #a5a5a5;
 	padding: 0 32px;
 	position: relative;
 
@@ -19,6 +20,7 @@
 		display: block;
 
 		&:hover {
+			color: white;
 			background-color: #2a2a2a;
 		}
 	}
@@ -57,8 +59,14 @@
 	}
 }
 
-.active-menu-item {
+.hover-menu-item {
+	color: white;
 	background-color: #2a2a2a;
+}
+
+.active {
+	color: white;
+	font-weight: bold;
 }
 
 
