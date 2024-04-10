@@ -1,0 +1,14 @@
+ol li {
+	list-style: inside decimal;
+}
+
+ol ul li {
+	list-style: inside disc;
+	padding-left: 16px;
+}
+
+.instructions {
+	width: fit-content;
+	text-align: left;
+	margin: 0 auto;
+}
