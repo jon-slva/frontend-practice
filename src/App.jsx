@@ -6,6 +6,7 @@ import Home from './pages/Home/Home'
 import Nav from './components/Nav/Nav'
 import ErrorPage from './pages/ErrorPage/ErrorPage'
 import ApisAndPromises from './pages/ApisAndPromises/ApisAndPromises'
+import Tables from './pages/Tables/Tables'
 function App() {
 
 	return (
@@ -15,6 +16,8 @@ function App() {
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route path="/apis-and-promises" element={<ApisAndPromises />} />
+					<Route path="/react" element={<ApisAndPromises />} />
+					<Route path="/tables" element={<Tables />} />
 					<Route path="*" element={<ErrorPage />} />
 				</Routes>
 			</BrowserRouter>
