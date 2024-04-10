@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { NavLink, Link } from 'react-router-dom'
 import './Nav.scss'
 
 const Nav = () => {
@@ -8,7 +9,6 @@ const Nav = () => {
 		reactMenuFadeTransition: false,
 		uiMenuFadeTransition: false
 	})
-
 	let timeoutId = null;
 
 	const handleMenu = (menuName) => {
@@ -40,14 +40,14 @@ const Nav = () => {
 			<nav className='nav-container'>
 				<ul className='nav'>
 					<li className='nav__item'>
-						<a href="/apis-and-promises" className='nav__item-link'>
+						<NavLink to="/apis-and-promises" className='nav__item-link' activeClassName='active-menu-item'>
 							APIs & Promises
-						</a>
+						</NavLink>
 					</li>
 					<li className='nav__item' onMouseEnter={() => handleMenu("reactMenuOn")} onMouseLeave={() => handleMenu("reactMenuFadeTransition")}>
-						<a href="" className={`nav__item-link ${menuState.reactMenuOn ? "active-menu-item" : ""} `}>
+						<NavLink to="/react" className={`nav__item-link ${menuState.reactMenuOn ? "hover-menu-item" : ""} `}>
 							React
-						</a>
+						</NavLink>
 						{menuState.reactMenuOn && (
 							<ul className={`react-submenu ${menuState.reactMenuFadeTransition ? "fade-in" : "fade-out"}`} onMouseEnter={() => handleMenu("reactMenuOn")} onMouseLeave={() => handleMenu("reactMenuFadeTransition")}>
 								<li className='react-submenu__header'>
@@ -106,7 +106,7 @@ const Nav = () => {
 						</a>
 					</li>
 					<li className='nav__item' onMouseEnter={() => handleMenu("uiMenuOn")} onMouseLeave={() => handleMenu("uiMenuFadeTransition")}>
-						<a href="" className={`nav__item-link ${menuState.uiMenuOn ? "active-menu-item" : ""} `}>
+						<a href="" className={`nav__item-link ${menuState.uiMenuOn ? "hover-menu-item" : ""} `}>
 							UI Libraries
 						</a>
 						{menuState.uiMenuOn && (
@@ -125,9 +125,9 @@ const Nav = () => {
 						</a>
 					</li>
 					<li className='nav__item'>
-						<a href="" className='nav__item-link'>
+						<NavLink to="/tables" className='nav__item-link'>
 							Tables
-						</a>
+						</NavLink>
 					</li>
 				</ul>
 			</nav >
