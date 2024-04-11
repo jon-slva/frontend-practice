@@ -40,12 +40,12 @@ const Nav = () => {
 			<nav className='nav-container'>
 				<ul className='nav'>
 					<li className='nav__item'>
-						<NavLink to="/" className='nav__item-link' activeClassName='active-menu-item'>
+						<NavLink to="/" className='nav__item-link'>
 							Home
 						</NavLink>
 					</li>
 					<li className='nav__item'>
-						<NavLink to="/apis-and-promises" className='nav__item-link' activeClassName='active-menu-item'>
+						<NavLink to="/apis-and-promises" className='nav__item-link'>
 							APIs & Promises
 						</NavLink>
 					</li>
@@ -125,13 +125,13 @@ const Nav = () => {
 						)}
 					</li>
 					<li className='nav__item'>
-						<a href="" className='nav__item-link'>
-							Accessibility
-						</a>
-					</li>
-					<li className='nav__item'>
 						<NavLink to="/tables" className='nav__item-link'>
 							Tables
+						</NavLink>
+					</li>
+					<li className='nav__item'>
+						<NavLink to="/questions" className='nav__item-link'>
+							Questions
 						</NavLink>
 					</li>
 				</ul>
