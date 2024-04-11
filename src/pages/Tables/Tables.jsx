@@ -24,13 +24,14 @@ const Tables = () => {
 		} else if (type === 'email') {
 			const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 			return emailRegex.test(value) ? "" : "Invalid email address"; // LIVE basic regex validation of email.
-		} else {
+		} else if (type === 'phone') {
 			const phoneRegex = /^[\s()+-]*([0-9][\s()+-]*){6,20}$/;
 			return phoneRegex.test(value) || value === "" ? "" : "Invalid phone number"; // LIVE basic regex phone number
+		} else {
+			return value === "" ? "Date of Birth is required" : ""; // LIVE if the date is empty, render this error
 		}
-
-
 	}
+
 
 	const handleInputChange = (e) => {
 		const { name, value } = e.target;
@@ -48,29 +49,46 @@ const Tables = () => {
 			case "phone":
 				validationError = validateForm(value, 'phone');
 				break;
+			case "dob":
+				validationError = validateForm(value, 'dob');
+				break;
 			default:
 				break;
 		}
-
-		console.log(validationError);
 
 		setErrors({ ...errors, [name]: validationError })
 		setNewUser({ ...newUser, [name]: value });
 		console.log(errors);
 	}
 
-	const addUser = (user) => {
-		// something that adds it to state
+
+	const addUser = () => {
+		if (newUser.dob === '') {
+			console.log("dob is empty");
+			let validationError = validateForm(newUser.dob, 'dob');
+
+			setErrors({ ...errors, dob: validationError });
+		} else {
+			setUsers((previous) => [...previous, newUser]); // don't forget when updating state, you can include the previous values with this use of the spread operator
+			setNewUser({ name: "", email: "", phone: "", dob: "" });
+		}
 	}
 
+
 	const deleteEntry = (index) => {
-		// something that removes it from state
+		setUsers(users.filter((user, i) => i !== index));
 	}
+
 
 	const addButtonDisabled =
 		newUser.name === '' ||
 		newUser.email === '' ||
-		newUser.phone === '';
+		newUser.phone === '' ||
+		errors.name !== '' ||
+		errors.email !== '' ||
+		errors.phone !== '' ||
+		errors.dob !== '';
+
 
 	return (
 		<main>
@@ -113,6 +131,7 @@ const Tables = () => {
 					onChange={handleInputChange}
 					newUser={newUser}
 					addButtonDisabled={addButtonDisabled}
+					errors={errors}
 				/>
 
 			</table>
