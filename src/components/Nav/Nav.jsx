@@ -40,6 +40,11 @@ const Nav = () => {
 			<nav className='nav-container'>
 				<ul className='nav'>
 					<li className='nav__item'>
+						<NavLink to="/" className='nav__item-link' activeClassName='active-menu-item'>
+							Home
+						</NavLink>
+					</li>
+					<li className='nav__item'>
 						<NavLink to="/apis-and-promises" className='nav__item-link' activeClassName='active-menu-item'>
 							APIs & Promises
 						</NavLink>
