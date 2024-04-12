@@ -21,16 +21,19 @@ const Ide = ({ consoleOutput, setConsoleOutput }) => {
 			let consoleLogs = [];
 			const originalLog = console.log;
 			console.log = (...args) => {
-				consoleLogs.push(args.join(' '));
-				originalLog.apply(console, args);
+				originalLog.apply(console, args); // Log to the actual console
+				consoleLogs.push(args.map(arg =>
+					typeof arg === 'object' ? JSON.stringify(arg, null, 2) : arg
+				)); // Store in consoleLogs
 			};
 
 			const output = eval(code); // Evaluate the code
 			console.log = originalLog; // Restore the original console.log function
 
-			setConsoleOutput(consoleLogs.join('\n')); // Update the console output with the captured logs
+			setConsoleOutput(consoleLogs); // Update the console output with the captured logs
+			console.log(consoleLogs)
 		} catch (error) {
-			setConsoleOutput(error.toString()); // If there's an error, show it in the console output
+			setConsoleOutput([error.toString()]); // If there's an error, show it in the console output
 		}
 	};
 
@@ -59,28 +62,42 @@ const Ide = ({ consoleOutput, setConsoleOutput }) => {
 	}, []);
 
 	return (
-		<>
+		<section style={{
+			display: 'flex',
+			flexDirection: 'column',
+			alignItems: 'center',
+			margin: '16px',
+		}}>
+			<h2>Code Editor</h2>
 			<div ref={parentRef} style={{
-				height: '300px',
+				height: '400px',
+				width: '1400px',
 				textAlign: 'left',
 				backgroundColor: '#282c34',
 				borderRadius: "8px",
 				overflow: 'auto',
 				padding: '8px',
+				flexGrow: 1,
 			}}>
 			</div>
 			<button onClick={runCode} style={{ margin: '8px' }}>Run Code</button>
 			<div style={{
+				minHeight: '150px',
+				width: '1400px',
 				backgroundColor: '#000000',
 				textAlign: 'left',
-				padding: '10px',
-				height: '100px',
+				padding: '12px',
 				borderRadius: "8px",
 				overflow: 'auto',
+				fontSize: '12px',
 			}}>
-				{consoleOutput}
+				{consoleOutput.flatMap((output, index) => (
+					<div key={index} style={{ whiteSpace: '', margin: '2px 0' }}>
+						{output}
+					</div>
+				))}
 			</div> {/* Console output */}
-		</>
+		</section>
 	)
 }
 
