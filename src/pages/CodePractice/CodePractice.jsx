@@ -19,7 +19,6 @@ const CodePractice = () => {
 	return (
 		<main>
 			<h1>Code Practice</h1>
-			{/* <h2>Practice whatever you want</h2> */}
 
 			<section style={{
 				display: 'flex',
