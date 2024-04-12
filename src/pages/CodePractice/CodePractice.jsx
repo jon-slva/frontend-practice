@@ -18,12 +18,13 @@ const CodePractice = () => {
 
 	return (
 		<main>
-			<h1>Questions</h1>
+			<h1>Code Practice</h1>
 			{/* <h2>Practice whatever you want</h2> */}
 
 			<section style={{
 				display: 'flex',
-				gap: '8px'
+				gap: '8px',
+				height: '60vh'
 			}}>
 
 				<aside style={{
