@@ -2,40 +2,48 @@ import { useRef, useState } from 'react';
 import Ide from '../../components/Ide/Ide';
 import Whiteboard from '../../components/Whiteboard/Whiteboard';
 
-
 const CodePractice = () => {
 	const [consoleOutput, setConsoleOutput] = useState(''); // State variable for console output
 	const [whiteboard, setWhiteboard] = useState(''); // State variable for whiteboard
+	const [showWhiteboard, setShowWhiteboard] = useState(true); // State variable to toggle between Whiteboard and TextField
+	const [textFieldValue, setTextFieldValue] = useState(''); // State variable for the text field value
 
-	const runCode = () => {
-		try {
-			const code = editorRef.current.state.doc.toString(); // Get the code from the editor
 
-			let consoleLogs = [];
-			const originalLog = console.log;
-			console.log = (...args) => {
-				consoleLogs.push(args.join(' '));
-				originalLog.apply(console, args);
-			};
 
-			const output = eval(code); // Evaluate the code
-			console.log = originalLog; // Restore the original console.log function
-
-			setConsoleOutput(consoleLogs.join('\n')); // Update the console output with the captured logs
-		} catch (error) {
-			setConsoleOutput(error.toString()); // If there's an error, show it in the console output
-		}
+	const toggleView = () => {
+		setShowWhiteboard(!showWhiteboard);
 	};
-
 
 	return (
 		<main>
 			<h1>Questions</h1>
 			<h2>Practice whatever you want</h2>
 
+			<button onClick={toggleView}>
+				{showWhiteboard ? 'Switch to Textfield' : 'Switch to Whiteboard'}
+			</button>
 
-			<Ide runCode={runCode} consoleOutput={consoleOutput} />
-			<Whiteboard whiteboard={whiteboard} setWhiteboard={setWhiteboard} />
+			<Ide consoleOutput={consoleOutput} setConsoleOutput={setConsoleOutput} />
+
+			{showWhiteboard ? (
+				<Whiteboard whiteboard={whiteboard} setWhiteboard={setWhiteboard} />
+			) : (
+				<textarea
+					value={textFieldValue}
+					onChange={(e) => setTextFieldValue(e.target.value)}
+					style={{
+						width: '100%',
+						height: '100px',
+						padding: '8px',
+						margin: '24px',
+						fontSize: '16px',
+						backgroundColor: '#313131',
+						borderRadius: '8px',
+						border: 'none',
+						height: '400px',
+					}}
+				/>
+			)}
 		</main>
 	);
 };
