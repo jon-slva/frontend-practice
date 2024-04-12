@@ -60,6 +60,10 @@ const Whiteboard = ({ whiteboard, setWhiteboard }) => {
 		setLines([]);
 	};
 
+	const handleUndo = () => {
+		setLines(lines.slice(0, -1));
+	};
+
 
 	useEffect(() => {
 		function handleResize() {
@@ -97,6 +101,7 @@ const Whiteboard = ({ whiteboard, setWhiteboard }) => {
 				<button onClick={toggleDarkMode}>
 					Dark Mode
 				</button>
+				<button onClick={handleUndo}>Undo</button>
 
 				<div className='toolbox__pen-eraser'>
 					<button
