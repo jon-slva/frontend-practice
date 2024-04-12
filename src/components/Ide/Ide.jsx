@@ -10,12 +10,33 @@ import { lintKeymap } from '@codemirror/lint';
 import { oneDark } from '@codemirror/theme-one-dark'; // Import the dark theme
 
 
-const Ide = ({ consoleOutput, runCode }) => {
+const Ide = ({ consoleOutput, setConsoleOutput }) => {
 	const editorRef = useRef(); // This will hold the EditorView instance
+	const parentRef = useRef(); // This will hold the parent DOM element
+
+	const runCode = () => {
+		try {
+			const code = editorRef.current.state.doc.toString(); // Get the code from the editor
+
+			let consoleLogs = [];
+			const originalLog = console.log;
+			console.log = (...args) => {
+				consoleLogs.push(args.join(' '));
+				originalLog.apply(console, args);
+			};
+
+			const output = eval(code); // Evaluate the code
+			console.log = originalLog; // Restore the original console.log function
+
+			setConsoleOutput(consoleLogs.join('\n')); // Update the console output with the captured logs
+		} catch (error) {
+			setConsoleOutput(error.toString()); // If there's an error, show it in the console output
+		}
+	};
 
 
 	useEffect(() => {
-		if (!editorRef.current) return;
+		if (!parentRef.current) return;
 		editorRef.current = new EditorView({
 			state: EditorState.create({
 				doc: '', // Make sure this string does not include a newline character
@@ -26,7 +47,6 @@ const Ide = ({ consoleOutput, runCode }) => {
 					drawSelection(),
 					EditorState.allowMultipleSelections.of(true),
 					highlightActiveLine(),
-					// defaultHighlightStyle.fallback,
 					keymap.of([...defaultKeymap, ...searchKeymap, ...historyKeymap, ...lintKeymap, completionKeymap]),
 					javascript(),
 					autocompletion(),
@@ -34,13 +54,13 @@ const Ide = ({ consoleOutput, runCode }) => {
 					oneDark, // Add the dark theme to your extensions
 				],
 			}),
-			parent: editorRef.current,
+			parent: parentRef.current,
 		});
 	}, []);
 
 	return (
 		<>
-			<div ref={editorRef} style={{
+			<div ref={parentRef} style={{
 				height: '300px',
 				textAlign: 'left',
 				backgroundColor: '#282c34',

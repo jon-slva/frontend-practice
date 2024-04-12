@@ -182,7 +182,6 @@ const Whiteboard = ({ whiteboard, setWhiteboard }) => {
 				}}
 			>
 				<Layer>
-					{!hasStartedDrawing && <Text text="Just start drawing" x={5} y={30} />}
 					{lines.map((line, i) => (
 						<Line
 							key={i}
