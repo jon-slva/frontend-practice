@@ -3,11 +3,10 @@ import Ide from '../../components/Ide/Ide';
 import Whiteboard from '../../components/Whiteboard/Whiteboard';
 
 const CodePractice = () => {
-	const [consoleOutput, setConsoleOutput] = useState(''); // State variable for console output
+	const [consoleOutput, setConsoleOutput] = useState([]); // State variable for console output
 	const [whiteboard, setWhiteboard] = useState(''); // State variable for whiteboard
 	const [showWhiteboard, setShowWhiteboard] = useState(true); // State variable to toggle between Whiteboard and TextField
 	const [textFieldValue, setTextFieldValue] = useState(''); // State variable for the text field value
-
 
 
 	const toggleView = () => {
