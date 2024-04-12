@@ -132,6 +132,7 @@ const Nav = () => {
 					<li className='nav__item'>
 						<NavLink to="/code-practice" className='nav__item-link'>
 							Code Practice
+
 						</NavLink>
 					</li>
 				</ul>
