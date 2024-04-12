@@ -66,12 +66,12 @@ const Ide = ({ consoleOutput, setConsoleOutput }) => {
 			display: 'flex',
 			flexDirection: 'column',
 			alignItems: 'center',
-			margin: '16px',
+			flex: 3,
+			gap: '8px',
 		}}>
-			<h2>Code Editor</h2>
 			<div ref={parentRef} style={{
 				height: '400px',
-				width: '1400px',
+				width: '100%',
 				textAlign: 'left',
 				backgroundColor: '#282c34',
 				borderRadius: "8px",
@@ -80,22 +80,23 @@ const Ide = ({ consoleOutput, setConsoleOutput }) => {
 				flexGrow: 1,
 			}}>
 			</div>
-			<button onClick={runCode} style={{ margin: '8px' }}>Run Code</button>
 			<div style={{
 				minHeight: '150px',
-				width: '1400px',
+				width: '100%',
 				backgroundColor: '#000000',
 				textAlign: 'left',
 				padding: '12px',
 				borderRadius: "8px",
 				overflow: 'auto',
 				fontSize: '12px',
+				position: 'relative',
 			}}>
 				{consoleOutput.flatMap((output, index) => (
 					<div key={index} style={{ whiteSpace: '', margin: '2px 0' }}>
 						{output}
 					</div>
 				))}
+				<button onClick={runCode} style={{ margin: '8px', position: 'absolute', right: '0px', top: '0px' }}>Run Code</button>
 			</div> {/* Console output */}
 		</section>
 	)
