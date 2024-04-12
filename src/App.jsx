@@ -8,6 +8,7 @@ import ErrorPage from './pages/ErrorPage/ErrorPage'
 import ApisAndPromises from './pages/ApisAndPromises/ApisAndPromises'
 import Tables from './pages/Tables/Tables'
 import CodePractice from './pages/CodePractice/CodePractice'
+
 function App() {
 
 	return (

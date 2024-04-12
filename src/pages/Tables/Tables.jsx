@@ -1,5 +1,6 @@
 import './Tables.scss'
 import { useState } from 'react'
+
 import tableData from '../../data/tables_data.json'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { dark, coy, funky } from 'react-syntax-highlighter/dist/esm/styles/prism';
@@ -90,6 +91,7 @@ const Tables = () => {
 		errors.dob !== '';
 
 
+
 	return (
 		<main>
 			<h1>Tables</h1>
@@ -103,6 +105,7 @@ const Tables = () => {
 					<li>Form must include validation</li>
 					<li>Form must include a submit button</li>
 					<li>Form must include a calendar✔️</li>
+
 					<li>Form must include delete functionality</li>
 				</ul>
 			</ol>
@@ -134,6 +137,7 @@ const Tables = () => {
 					errors={errors}
 				/>
 
+
 			</table>
 
 			{/* HTML Table Tags
@@ -160,6 +164,7 @@ id: Specifies a unique id for the input field. It's often used in conjunction wi
 
 
 */}
+
 
 
 		</main>
