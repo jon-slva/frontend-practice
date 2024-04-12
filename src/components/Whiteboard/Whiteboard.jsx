@@ -6,7 +6,7 @@ import Cursor from '../Cursor/Cursor';
 const Whiteboard = ({ whiteboard, setWhiteboard }) => {
 	const [tool, setTool] = useState('pen');
 	const [lines, setLines] = useState([]);
-	const [color, setColor] = useState('#222');
+	const [color, setColor] = useState('#000');
 	const [stageSize, setStageSize] = useState({ width: 500, height: 500 });
 	const [darkMode, setDarkMode] = useState(false);
 	const [hasStartedDrawing, setHasStartedDrawing] = useState(false);
@@ -186,7 +186,7 @@ const Whiteboard = ({ whiteboard, setWhiteboard }) => {
 						<Line
 							key={i}
 							points={line.points}
-							stroke={line.tool === 'eraser' ? (darkMode ? '#313131' : '#fff') : (darkMode && line.color === '#000' ? '#fff' : line.color)}
+							stroke={line.tool === 'eraser' ? (darkMode ? '#000' : '#fff') : (darkMode && line.color === '#000' ? '#fff' : line.color)}
 							strokeWidth={line.size} // Use the stored size here
 							tension={0.5}
 							lineCap="round"
