@@ -1,0 +1,47 @@
+.Whiteboard {
+	margin: 24px;
+}
+
+.toolbox {
+	display: flex;
+	padding: 0 16px;
+	margin-bottom: 12px;
+	gap: 24px;
+
+	&__title {
+		font-size: 32px;
+		margin: 0 28px;
+	}
+
+	&__pen-eraser {
+		display: flex;
+
+		&__pen {
+			border-radius: 8px 0 0 8px;
+		}
+
+		&__eraser {
+			border-radius: 0 8px 8px 0;
+		}
+	}
+
+	&__color-picker {
+		display: flex;
+		gap: 8px;
+		align-items: center;
+	}
+
+	&__brush-size {
+		display: flex;
+		gap: 8px;
+		align-items: center;
+
+		& input {
+			margin-right: 8px;
+		}
+	}
+}
+
+.active-swatch {
+	border: solid 2px #fff;
+}

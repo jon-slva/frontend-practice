@@ -130,8 +130,8 @@ const Nav = () => {
 						</NavLink>
 					</li>
 					<li className='nav__item'>
-						<NavLink to="/questions" className='nav__item-link'>
-							Questions
+						<NavLink to="/code-practice" className='nav__item-link'>
+							Code Practice
 						</NavLink>
 					</li>
 				</ul>
