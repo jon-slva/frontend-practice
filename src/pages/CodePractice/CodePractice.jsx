@@ -9,11 +9,23 @@ const CodePractice = () => {
 	const [showWhiteboard, setShowWhiteboard] = useState(true); // State variable to toggle between Whiteboard and TextField
 	const [textFieldValue, setTextFieldValue] = useState(''); // State variable for the text field value
 	const [questionIndex, setQuestionIndex] = useState(questionCards[0]); // State variable for the question index
+	const [currentQuestion, setCurrentQuestion] = useState(questionCards[0]); // State variable for the current question
 
 	console.log(questionCards[0]);
 
 	const toggleView = () => {
 		setShowWhiteboard(!showWhiteboard);
+	};
+
+	const updateQuestionIndex = (direction) => {
+		let currentIndex = questionCards.indexOf(questionIndex);
+		let nextIndex = direction === 'next' ? currentIndex + 1 : currentIndex - 1;
+		if (nextIndex >= questionCards.length) {
+			nextIndex = 0;
+		} else if (nextIndex < 0) {
+			nextIndex = questionCards.length - 1;
+		}
+		setQuestionIndex(questionCards[nextIndex]);
 	};
 
 	return (
@@ -42,6 +54,20 @@ const CodePractice = () => {
 						textAlign: 'left',
 						flex: 1
 					}}>
+
+
+						<div style={{
+							display: 'flex',
+							justifyContent: 'space-between',
+							gap: '8px',
+						}}>
+							<button style={{ flex: '1' }} onClick={() => updateQuestionIndex('prev')}>
+								Previous
+							</button>
+							<button style={{ flex: '1' }} onClick={() => updateQuestionIndex('next')}>
+								Next
+							</button>
+						</div>
 
 						<h2>Question</h2>
 						<p>{questionIndex.instructions}</p>
