@@ -1,7 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { EditorState } from '@codemirror/state';
 import { EditorView, keymap, highlightSpecialChars, drawSelection, highlightActiveLine, lineNumbers } from '@codemirror/view';
-// import { defaultHighlightStyle } from '@codemirror/language';
 import { defaultKeymap, historyKeymap, history } from '@codemirror/commands';
 import { javascript } from '@codemirror/lang-javascript';
 import { searchKeymap, highlightSelectionMatches } from '@codemirror/search';
