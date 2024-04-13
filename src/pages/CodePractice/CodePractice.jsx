@@ -11,7 +11,6 @@ const CodePractice = () => {
 	const [questionIndex, setQuestionIndex] = useState(questionCards[0]); // State variable for the question index
 	const [currentQuestion, setCurrentQuestion] = useState(questionCards[0]); // State variable for the current question
 
-	console.log(questionCards[0]);
 
 	const toggleView = () => {
 		setShowWhiteboard(!showWhiteboard);
