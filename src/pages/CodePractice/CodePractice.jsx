@@ -92,7 +92,6 @@ const CodePractice = () => {
 					onChange={(e) => setTextFieldValue(e.target.value)}
 					style={{
 						width: '100%',
-						height: '100px',
 						padding: '8px',
 						margin: '24px',
 						fontSize: '16px',
