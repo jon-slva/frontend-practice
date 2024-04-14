@@ -21,6 +21,7 @@
 		"@codemirror/view": "^6.26.2",
 		"@lezer/highlight": "^1.2.0",
 		"axios": "^1.6.8",
+		"dotenv": "^16.4.5",
 		"konva": "^9.3.6",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
