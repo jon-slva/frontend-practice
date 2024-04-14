@@ -94,12 +94,19 @@ const Nav = () => {
 										<li className='react-submenu__nav--item'>UseLocation</li>
 										<li className='react-submenu__nav--item'>React Router Native</li>
 									</ul>
+									<li className='react-submenu__header'>
+										Loading
+										<ul className='react-submenu__nav'>
+											<li className='react-submenu__nav--item'>Suspense</li>
+											<li className='react-submenu__nav--item'>Lazy Loading</li>
+										</ul>
+									</li>
 								</li>
 								<li className='react-submenu__header'>
-									Loading
+									State & Misc
 									<ul className='react-submenu__nav'>
-										<li className='react-submenu__nav--item'>Suspense</li>
-										<li className='react-submenu__nav--item'>Lazy Loading</li>
+										<li className='react-submenu__nav--item'><NavLink to={"/react/state-misc/flushsync"}>flushSync </NavLink></li>
+										{/* <li className='react-submenu__nav--item'>Lazy Loading</li> */}
 									</ul>
 								</li>
 							</ul>
