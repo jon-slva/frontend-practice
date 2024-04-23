@@ -1,69 +1,42 @@
 import './ApisAndPromises.scss';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense, lazy } from 'react';
 import apiCards from '../../data/api_type_cards.json';
+const LazyRow = lazy(() => import('../../components/LazyRow/LazyRow'));
+
+const VITE_NASA_API_KEY = import.meta.env.VITE_NASA_API_KEY;
 
 const thenCatchCards = apiCards[0].thenCatchCards;
 const asyncAwaitCards = apiCards[1].asyncAwaitCards;
 const preEs6Cards = apiCards[2].preEs6Cards;
 
 const ApisAndPromises = () => {
-	const [axiosData, setAxiosData] = useState(null);
-	const [fetchApiData, setFetchApiData] = useState(null);
+	const [axiosData, setAxiosData] = useState({
+		links: {},
+		element_count: '',
+		near_earth_objects: {
+
+		}
+	});
 	const [cardToggle, setCardToggle] = useState(false);
 
-	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				const response = await axios.get("https://api.publicAndPromises.org/entries");
-				setAxiosData(response.data);
-				console.log("Axios", axiosData);
-			} catch (error) {
-				console.error(error);
-			}
-		}
-
-		fetchData();
-	}, []);
 
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const response = await fetch("https://api.publicapis.org/entries");
-				if (!response.ok) {
-					throw new Error(`HTTP error! status: ${response.status}`);
-				}
-				const data = await response.json();
-				setFetchApiData(data);
-				console.log("Fetch API", fetchApiData);
-			} catch (error) {
+				const { data } = await axios.get(`https://api.nasa.gov/neo/rest/v1/feed?start_date=2024-04-01&end_date=2024-04-08&api_key=${VITE_NASA_API_KEY}`);
+				// console.log(data)
+				setAxiosData(data);
+				console.log(data.near_earth_objects)
+				console.log(axiosData.element_count)
+			}
+			catch (error) {
 				console.error(error);
 			}
 		}
-
 		fetchData();
-	}, []);
 
-	useEffect(function () {
-		function fetchData() {
-			fetch("https://api.publicapis.org/entries")
-				.then(function (response) {
-					if (!response.ok) {
-						throw new Error("HTTP error! status: " + response.status);
-					}
-					return response.json();
-				})
-				.then(function (data) {
-					setFetchApiData(data);
-					console.log("Fetch API", fetchApiData);
-				})
-				.catch(function (error) {
-					console.error(error);
-				});
-		}
-
-		fetchData();
-	}, []);
+	}, [])
 
 
 
@@ -118,9 +91,31 @@ const ApisAndPromises = () => {
 				</>
 			}
 
-			<h2>To mess with these APIs, we are going to use https://api.publicapis.org/</h2>
-			<p><a href="https://api.publicapis.org/">https://api.publicapis.org/</a> is an API that lists public APIs</p>
-			<p>It returns a ton of data which is great for figuring out different ways of handling it all, and is great prep for interviews</p>
+			<h2>Here is some data from NASA's database on Near Earth Objects</h2>
+
+
+			<h3>{axiosData.element_count}</h3>
+
+			<table>
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Name</th>
+						<th>Abs Magnitude</th>
+						<th>Est Diameter</th>
+						<th>Is Hazardous</th>
+						<th>Close Approach Date</th>
+					</tr>
+				</thead>
+				<tbody>
+					<Suspense fallback={<div>Loading...</div>}>
+						<LazyRow axiosData={axiosData} />
+					</Suspense>
+				</tbody>
+			</table>
+
+
+
 
 
 		</main >
