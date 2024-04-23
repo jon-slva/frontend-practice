@@ -6,7 +6,7 @@ import Cursor from '../Cursor/Cursor';
 const Whiteboard = ({ whiteboard, setWhiteboard }) => {
 	const [tool, setTool] = useState('pen');
 	const [lines, setLines] = useState([]);
-	const [color, setColor] = useState('#222');
+	const [color, setColor] = useState('#000');
 	const [stageSize, setStageSize] = useState({ width: 500, height: 500 });
 	const [darkMode, setDarkMode] = useState(false);
 	const [hasStartedDrawing, setHasStartedDrawing] = useState(false);
@@ -60,6 +60,10 @@ const Whiteboard = ({ whiteboard, setWhiteboard }) => {
 		setLines([]);
 	};
 
+	const handleUndo = () => {
+		setLines(lines.slice(0, -1));
+	};
+
 
 	useEffect(() => {
 		function handleResize() {
@@ -97,6 +101,7 @@ const Whiteboard = ({ whiteboard, setWhiteboard }) => {
 				<button onClick={toggleDarkMode}>
 					Dark Mode
 				</button>
+				<button onClick={handleUndo}>Undo</button>
 
 				<div className='toolbox__pen-eraser'>
 					<button
@@ -177,12 +182,11 @@ const Whiteboard = ({ whiteboard, setWhiteboard }) => {
 				}}
 			>
 				<Layer>
-					{!hasStartedDrawing && <Text text="Just start drawing" x={5} y={30} />}
 					{lines.map((line, i) => (
 						<Line
 							key={i}
 							points={line.points}
-							stroke={line.tool === 'eraser' ? (darkMode ? '#313131' : '#fff') : (darkMode && line.color === '#000' ? '#fff' : line.color)}
+							stroke={line.tool === 'eraser' ? (darkMode ? '#000' : '#fff') : (darkMode && line.color === '#000' ? '#fff' : line.color)}
 							strokeWidth={line.size} // Use the stored size here
 							tension={0.5}
 							lineCap="round"

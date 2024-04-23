@@ -1,41 +1,107 @@
 import { useRef, useState } from 'react';
+import questionCards from '../../data/question_cards.json';
 import Ide from '../../components/Ide/Ide';
 import Whiteboard from '../../components/Whiteboard/Whiteboard';
 
-
 const CodePractice = () => {
-	const [consoleOutput, setConsoleOutput] = useState(''); // State variable for console output
+	const [consoleOutput, setConsoleOutput] = useState([]); // State variable for console output
 	const [whiteboard, setWhiteboard] = useState(''); // State variable for whiteboard
+	const [showWhiteboard, setShowWhiteboard] = useState(true); // State variable to toggle between Whiteboard and TextField
+	const [textFieldValue, setTextFieldValue] = useState(''); // State variable for the text field value
+	const [questionIndex, setQuestionIndex] = useState(questionCards[0]); // State variable for the question index
+	const [currentQuestion, setCurrentQuestion] = useState(questionCards[0]); // State variable for the current question
 
-	const runCode = () => {
-		try {
-			const code = editorRef.current.state.doc.toString(); // Get the code from the editor
+	console.log(questionCards[0]);
 
-			let consoleLogs = [];
-			const originalLog = console.log;
-			console.log = (...args) => {
-				consoleLogs.push(args.join(' '));
-				originalLog.apply(console, args);
-			};
-
-			const output = eval(code); // Evaluate the code
-			console.log = originalLog; // Restore the original console.log function
-
-			setConsoleOutput(consoleLogs.join('\n')); // Update the console output with the captured logs
-		} catch (error) {
-			setConsoleOutput(error.toString()); // If there's an error, show it in the console output
-		}
+	const toggleView = () => {
+		setShowWhiteboard(!showWhiteboard);
 	};
 
+	const updateQuestionIndex = (direction) => {
+		let currentIndex = questionCards.indexOf(questionIndex);
+		let nextIndex = direction === 'next' ? currentIndex + 1 : currentIndex - 1;
+		if (nextIndex >= questionCards.length) {
+			nextIndex = 0;
+		} else if (nextIndex < 0) {
+			nextIndex = questionCards.length - 1;
+		}
+		setQuestionIndex(questionCards[nextIndex]);
+	};
 
 	return (
 		<main>
-			<h1>Questions</h1>
-			<h2>Practice whatever you want</h2>
+			<h1>Code Practice</h1>
+
+			<section style={{
+				display: 'flex',
+				gap: '8px',
+				height: '60vh'
+			}}>
+
+				<aside style={{
+					flex: 1,
+					display: 'flex',
+					flexDirection: 'column',
+					gap: '8px',
+				}}>
+					<div style={{
+						display: 'flex',
+						flexDirection: 'column',
+						fontSize: '12px',
+						backgroundColor: '#282c34',
+						borderRadius: '8px',
+						padding: '16px',
+						textAlign: 'left',
+						flex: 1
+					}}>
 
 
-			<Ide runCode={runCode} consoleOutput={consoleOutput} />
-			<Whiteboard whiteboard={whiteboard} setWhiteboard={setWhiteboard} />
+						<div style={{
+							display: 'flex',
+							justifyContent: 'space-between',
+							gap: '8px',
+						}}>
+							<button style={{ flex: '1' }} onClick={() => updateQuestionIndex('prev')}>
+								Previous
+							</button>
+							<button style={{ flex: '1' }} onClick={() => updateQuestionIndex('next')}>
+								Next
+							</button>
+						</div>
+
+						<h2>Question</h2>
+						<p>{questionIndex.instructions}</p>
+						<p>{questionIndex.input}</p>
+						<p>{questionIndex.example}</p>
+						<p>{questionIndex.description}</p>
+					</div>
+
+					<button onClick={toggleView}>
+						{showWhiteboard ? 'Switch to Textfield' : 'Switch to Whiteboard'}
+					</button>
+				</aside>
+				<Ide consoleOutput={consoleOutput} setConsoleOutput={setConsoleOutput} />
+
+			</section>
+
+			{showWhiteboard ? (
+				<Whiteboard whiteboard={whiteboard} setWhiteboard={setWhiteboard} />
+			) : (
+				<textarea
+					value={textFieldValue}
+					onChange={(e) => setTextFieldValue(e.target.value)}
+					style={{
+						width: '100%',
+						padding: '8px',
+						margin: '24px',
+						fontSize: '16px',
+						backgroundColor: '#313131',
+						borderRadius: '8px',
+						border: 'none',
+						height: '400px',
+					}}
+				/>
+			)}
 		</main>
 	);
 };

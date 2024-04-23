@@ -1,0 +1,62 @@
+[
+	{
+		"instructions": "Write a function that sums all numbers in a given array with subarrays.\nNo limit to the levels of nesting we can have. Keep in mind the complexity and efficiency of the solution",
+		"input": "var arr = ['a', 1, 2, [3, 'b', 4, [5, 6, 'c']], 'd', 7, [8, 9]];",
+		"example": "",
+		"output": "45"
+	},
+	{
+		"instructions": "Write a function that returns a number incremented by 1 on each call using a closure.",
+		"input": "const count =  ?? (implement)",
+		"example": "",
+		"output": "console.log(count()) // 1\\nconsole.log(count()) // 2\\nconsole.log(count()) // 3"
+	},
+	{
+		"instructions": "Write a function that takes in an array of numbers and selectedNumber as parameters.\nFunction will manipulate the original array in place and change the location of selected number.\nSelected number / numbers should be moved to the beginning of the array.\nOrder of any number other selectedNumber does not matter.",
+		"input": "const exampleArray = [2,5,3,7,8,1,2,3,85,321,2123,6,3,3,543];",
+		"example": "",
+		"output": ""
+	},
+	{
+		"instructions": "Write a function that takes in non empty string and return Boolean representing whether string is palindrome or not.",
+		"input": "const exampleString = \"abcdcba\"",
+		"example": "",
+		"output": "true"
+	},
+	{
+		"instructions": "Write your own map function from scratch.\nFunction will take array and callback function as parameters",
+		"input": "",
+		"example": "map([3,4,5], subtractTwo);",
+		"output": "[1,2,3]"
+	},
+	{
+		"instructions": "Write a function called runInOrder that accepts as arguments in this order - an array of functions and an array of numbers representing times in milliseconds.\nrunInOrder should execute the functions in order, with the corresponding numbers in milliseconds being the time to wait from the previous invocation.",
+		"input": "",
+		"example": "function sayHi() {\\n\\tconsole.log('hi');\\n};\\n\\nfunction sayBye() {\\n\\tconsole.log('bye');\\n};\\n\\nfunction sayHowdy() {\\n\\tconsole.log('howdy');\\n};\\n\\nrunInOrder([sayHi, sayBye, sayHowdy], [300, 600, 200]);",
+		"output": "should log:\\n'hi' (after 300 ms)\\n'bye' (600 ms after 'hi')\\n'howdy' (200 ms after 'bye')"
+	},
+	{
+		"instructions": "Write a deepEqual function that takes in two required values and returns if those two values are deeply equal to each other.",
+		"input": "",
+		"example": "",
+		"output": ""
+	},
+	{
+		"instructions": "Write a function that takes in array of objects as a parameter.\\nFunction will return new array of objects where every undefined key/value is deleted from\\neach object.\\nOriginal array must be protected and not manipulated in place.",
+		"input": "const exampleArray = [\\n\\t{name: \"John\", age: 25, gender: \"male\"},\\n\\t{name: \"Nick\", age: 12, gender: \"male\"},\\n\\t{name: \"Recep\", age: 22, gender: undefined},\\n\\t{name: \"Zoz\", age: 26, gender: \"male\"},\\n\\t{name: \"Sebep\", age: 52, gender: undefined},\\n]",
+		"example": "",
+		"output": ""
+	},
+	{
+		"instructions": "Write a function getUserData that takes a userId as an argument and fetches user data\\nfrom two different API endpoints\\n\\t- https://jsonplaceholder.typicode.com/users/{userId} and\\n\\t- https://jsonplaceholder.typicode.com/posts?userId={userId}.\\nThe function should return a Promise that resolves to an object containing\\nthe user's name and an array of their posts. If there's an error at any point,\\nthe Promise should reject with an error message.",
+		"input": "",
+		"example": "",
+		"output": ""
+	},
+	{
+		"instructions": "Write a function add that takes a number n as an argument and\\nreturns another function that takes a number m as an argument\\nand returns the sum of n and m. The returned function should be able\\nto access n even after the add function has finished executing.",
+		"input": "",
+		"example": "const addFive = add(5);\\nconsole.log(addFive(3)); // Output: 8\\nconsole.log(addFive(7)); // Output: 12",
+		"output": ""
+	}
+]
