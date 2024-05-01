@@ -33,6 +33,8 @@ const Flushsync = () => {
 			<button onClick={clickFlushHandle}>
 				Increment count ({flushCount})
 			</button>
+
+
 		</div>
 	)
 }
