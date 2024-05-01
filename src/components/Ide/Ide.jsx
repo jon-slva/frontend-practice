@@ -9,7 +9,7 @@ import { lintKeymap } from '@codemirror/lint';
 import { oneDark } from '@codemirror/theme-one-dark'; // Import the dark theme
 
 
-const Ide = ({ consoleOutput, setConsoleOutput }) => {
+const Ide = ({ consoleOutput, setConsoleOutput, startingContent }) => {
 	const editorRef = useRef(); // This will hold the EditorView instance
 	const parentRef = useRef(); // This will hold the parent DOM element
 
@@ -41,7 +41,7 @@ const Ide = ({ consoleOutput, setConsoleOutput }) => {
 		if (!parentRef.current) return;
 		editorRef.current = new EditorView({
 			state: EditorState.create({
-				doc: '', // Make sure this string does not include a newline character
+				doc: startingContent || '', // Make sure this string does not include a newline character
 				extensions: [
 					lineNumbers(),
 					highlightSpecialChars(),
@@ -50,7 +50,7 @@ const Ide = ({ consoleOutput, setConsoleOutput }) => {
 					EditorState.allowMultipleSelections.of(true),
 					highlightActiveLine(),
 					keymap.of([...defaultKeymap, ...searchKeymap, ...historyKeymap, ...lintKeymap, completionKeymap]),
-					javascript(),
+					javascript({ typescript: false }),
 					autocompletion(),
 					highlightSelectionMatches(),
 					oneDark, // Add the dark theme to your extensions
