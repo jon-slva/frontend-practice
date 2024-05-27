@@ -1,9 +1,9 @@
 import Ide from '../../components/Ide/Ide';
 import { useState } from 'react';
-import './Forms.scss'
+import './JsClasses.scss'
 
 
-const Forms = () => {
+export default function JsClasses() {
 	const [consoleOutput, setConsoleOutput] = useState([]);
 
 	const codeSnippet = `
@@ -43,7 +43,7 @@ const Forms = () => {
 
 	return (
 		<div>
-			<h1>Forms</h1>
+			<h1>Classes in JavaScript</h1>
 
 			<pre style={{ textAlign: 'left' }}>
 				<code>{codeSnippet}</code>
@@ -53,5 +53,3 @@ const Forms = () => {
 		</div>
 	);
 };
-
-export default Forms
