@@ -134,9 +134,9 @@ const Nav = () => {
 						)}
 					</li>
 					<li className='nav__item' onMouseEnter={() => handleMenu("htmlMenuOn")} onMouseLeave={() => handleMenu("htmlMenuFadeTransition")}>
-						<a href="" className={`nav__item-link ${menuState.htmlMenuOn ? "hover-menu-item" : ""} `}>
-							HTML & Foundations
-						</a>
+						<NavLink href="" className={`nav__item-link ${menuState.htmlMenuOn ? "hover-menu-item" : ""} `}>
+							HTML & JavaScript
+						</NavLink>
 						{menuState.htmlMenuOn && (
 							<ul className={`ui-submenu ${menuState.htmlMenuFadeTransition ? "fade-in" : "fade-out"}`} onMouseEnter={() => handleMenu("htmlMenuOn")} onMouseLeave={() => handleMenu("htmlMenuFadeTransition")}>
 								<li className='ui-submenu__item'>
@@ -147,6 +147,11 @@ const Nav = () => {
 								<li className='ui-submenu__item'>
 									<NavLink to="/forms">
 										Forms
+									</NavLink>
+								</li>
+								<li className='ui-submenu__item'>
+									<NavLink to="/classes">
+										JS Classes
 									</NavLink>
 								</li>
 							</ul>

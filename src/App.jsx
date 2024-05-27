@@ -10,6 +10,7 @@ import Tables from './pages/Tables/Tables'
 import Forms from './pages/Forms/Forms'
 import CodePractice from './pages/CodePractice/CodePractice'
 import FlushSync from './pages/Flushsync/Flushsync'
+import JsClasses from './pages/JsClasses/JsClasses'
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
 					<Route path="/react/state-misc/flushsync" element={<FlushSync />} />
 					<Route path="/tables" element={<Tables />} />
 					<Route path="/forms" element={<Forms />} />
+					<Route path="/classes" element={<JsClasses />} />
 					<Route path="/code-practice" element={<CodePractice />} />
 					<Route path="*" element={<ErrorPage />} />
 				</Routes>
