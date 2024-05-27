@@ -42,17 +42,15 @@ const Forms = () => {
 	`;
 
 	return (
-		<div>
-			<form>
-				{/* Your form inputs */}
-			</form>
+		<main className='main'>
+			<h1>Forms</h1>
 
 			<pre style={{ textAlign: 'left' }}>
 				<code>{codeSnippet}</code>
 			</pre>
 
-			<Ide startingContent={codeSnippet} consoleOutput={consoleOutput} />
-		</div>
+			<Ide startingContent={codeSnippet} consoleOutput={consoleOutput} setConsoleOutput={setConsoleOutput} />
+		</main>
 	);
 };
 
