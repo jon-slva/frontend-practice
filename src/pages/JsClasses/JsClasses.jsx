@@ -6,50 +6,73 @@ import './JsClasses.scss'
 export default function JsClasses() {
 	const [consoleOutput, setConsoleOutput] = useState([]);
 
-	const codeSnippet = `
-<form>
-	<label for="username">Username</label>
-	<input
-		id="username"
-		type="text"
-		placeholder="user123"
-		name="username"
-		required />
+	const codeSnippet = `class Car {
+	constructor(brand) {
+		this.carName = brand;
+	}
+}
+let myCar = new Car("Toyota");
+console.log(myCar);
+`;
 
-	<label for="password">Password</label>
-	<input
-		id="password"
-		type="password"
-		name="password"
-		minlength="6"
-		required />
+	const codeSnippet2 = `class Car {
+	constructor(brand) {
+		this.carName = brand;
+	}
 
-	<fieldset>
-		<legend>Choose your animal</legend>
+	present() {
+		return 'I have a ' + this.carName;
+	}
+}
 
-		<label for="dog">Dog</label>
-		<input id="dog" type="radio" name="animal" value="dog" />
-
-		<label for="cat">Cat</label>
-		<input id="cat" type="radio" name="animal" value="cat" />
-
-		<label for="horse">Horse</label>
-		<input id="horse" type="radio" name="animal" value="horse" />
-	</fieldset>
-
-	<button>Submit</button>
-</form>
-	`;
+let myCar = new Car("Toyota");
+console.log(myCar.present());
+`;
 
 	return (
-		<div>
+		<main className='main'>
 			<h1>Classes in JavaScript</h1>
+			<p>
+				Classes in JavaScript are a type of function. But instead of using the keyword <code>function</code>, to initiate it, we use the keyword <code>class</code>, and the properties are assigned inside a <code>constructor()</code> method.
+			</p>
 
 			<pre style={{ textAlign: 'left' }}>
 				<code>{codeSnippet}</code>
 			</pre>
+			<p>
+				In the example above, <code>Car</code> is a class. <code>carName</code> is a property with a value of <code>brand</code>.
+				The <code>constructor()</code> method is a special method for creating and initializing an object created with a class.
+				<code>myCar</code> is an object of the class <code>Car</code>.
+			</p>
+			<Ide startingContent={codeSnippet} consoleOutput={consoleOutput} setConsoleOutput={setConsoleOutput} />
+			<p>
+				A class can also have methods. Methods are functions which belong to the class. They are defined inside the class body using the same syntax as functions.
+				However, these methods are often used to manipulate the properties of the class.
+			</p>
 
-			<Ide startingContent={codeSnippet} consoleOutput={consoleOutput} />
-		</div>
+			<pre style={{ textAlign: 'left' }}>
+				<code>{codeSnippet2}</code>
+			</pre>
+
+
+			<Ide startingContent={codeSnippet2} consoleOutput={consoleOutput} setConsoleOutput={setConsoleOutput} />
+			<p>
+				In the example above, <code>present</code> is a method that returns a string that includes the <code>carName</code>.
+				You can call this method on any instance of the <code>Car</code> class.
+			</p>
+
+			<p>
+				It's also important to note that the JavaScript classes, introduced in ECMAScript 2015, are primarily syntactical sugar over JavaScript's existing prototype-based inheritance.
+				The class syntax does not introduce a new object-oriented inheritance model to JavaScript.
+			</p>
+
+
+			<p>
+				To practice, make up your own. Give it several properties.
+			</p>
+			<Ide consoleOutput={consoleOutput} setConsoleOutput={setConsoleOutput} />
+
+
+		</main>
 	);
 };
