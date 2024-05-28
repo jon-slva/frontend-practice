@@ -1,0 +1,37 @@
+.main {
+	padding: 0 220px;
+	// width: 1060px;
+	display: flex;
+	flex-direction: column;
+}
+
+p code {
+	color: red;
+	background-color: #1b1b1b;
+	border-radius: 4px;
+	padding: 2px 4px;
+}
+
+.section {
+	margin-top: 24px;
+	margin-bottom: 36px;
+	display: flex;
+	flex-direction: column;
+	// align-items: center;
+	// width: 1400px;
+
+	&__text {
+		width: 1000px;
+		text-align: left;
+		align-self: center;
+	}
+
+	&__codeblock {
+		text-align: left;
+		width: 600px;
+		align-self: center;
+		background-color: #1b1b1b;
+		border-radius: 4px;
+		padding: 16px;
+	}
+}
