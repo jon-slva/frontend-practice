@@ -230,9 +230,45 @@ let book2 = new Book("1984", "George Orwell", 328);
 // console.log(book2.info())
 myLibrary.addBook(book1);
 myLibrary.addBook(book2);
-// console.log(myLibrary)
+console.log(myLibrary)
 console.log(myLibrary.findBook("1984")); // Should log the book object
 console.log(myLibrary.findBook("To Kill a Mockingbird").info()); // Should log "To Kill a Mockingbird by Harper Lee, 281 pages"
 
 myLibrary.removeBook("1984");
 console.log(myLibrary.findBook("1984")); // Should log undefined or null
+
+// class LinkedList {
+// 	constructor(...{ value: next }) {
+// 		this.nodes = [...node]
+// 		this.node = { value: next }
+// 	}
+// }
+
+
+// class LinkedList {
+// 	constructor() {
+// 		// The head of the list, initially null
+// 		this.head = null;
+// 	}
+
+// 	add(value) {
+// 		// Create a new node with the given value
+// 		const newNode = { value, next: null };
+
+// 		// If the list is empty, set the head to the new node
+// 		if (this.head === null) {
+// 			this.head = newNode;
+// 		} else {
+// 			// Otherwise, find the last node in the list
+// 			let lastNode = this.head;
+// 			while (lastNode.next !== null) {
+// 				lastNode = lastNode.next;
+// 			}
+
+// 			// And add the new node to the end of the list
+// 			lastNode.next = newNode;
+// 		}
+// 	}
+// }
+
+
