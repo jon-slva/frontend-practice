@@ -11,6 +11,7 @@ import Forms from './pages/Forms/Forms'
 import CodePractice from './pages/CodePractice/CodePractice'
 import FlushSync from './pages/Flushsync/Flushsync'
 import JsClasses from './pages/JsClasses/JsClasses'
+import LinkedLists from './pages/LinkedLists/LinkedLists'
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
 					<Route path="/tables" element={<Tables />} />
 					<Route path="/forms" element={<Forms />} />
 					<Route path="/classes" element={<JsClasses />} />
+					<Route path="/linkedlists" element={<LinkedLists />} />
 					<Route path="/code-practice" element={<CodePractice />} />
 					<Route path="*" element={<ErrorPage />} />
 				</Routes>
