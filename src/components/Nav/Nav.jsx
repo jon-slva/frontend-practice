@@ -154,6 +154,11 @@ const Nav = () => {
 										JS Classes
 									</NavLink>
 								</li>
+								<li className='ui-submenu__item'>
+									<NavLink to="/linkedlists">
+										Linked Lists
+									</NavLink>
+								</li>
 							</ul>
 						)}
 					</li>

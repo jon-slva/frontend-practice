@@ -230,7 +230,7 @@ let book2 = new Book("1984", "George Orwell", 328);
 // console.log(book2.info())
 myLibrary.addBook(book1);
 myLibrary.addBook(book2);
-// console.log(myLibrary)
+console.log(myLibrary)
 console.log(myLibrary.findBook("1984")); // Should log the book object
 console.log(myLibrary.findBook("To Kill a Mockingbird").info()); // Should log "To Kill a Mockingbird by Harper Lee, 281 pages"
 
