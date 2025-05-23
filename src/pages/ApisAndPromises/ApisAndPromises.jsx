@@ -96,6 +96,12 @@ const ApisAndPromises = () => {
 
 			<h3>{axiosData.element_count}</h3>
 
+			<p style={{
+				// position: 'absolute',
+				width: '100%',
+				left: '0',
+			}}
+			>These elements below implement Suspense and inside that, a component with LazyLoading to increase performance</p>
 			<table>
 				<thead>
 					<tr>

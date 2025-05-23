@@ -7,12 +7,14 @@ const Nav = () => {
 		reactMenuOn: false,
 		uiMenuOn: false,
 		reactMenuFadeTransition: false,
-		uiMenuFadeTransition: false
+		uiMenuFadeTransition: false,
+		htmlMenuOn: false,
+		htmlMenuFadeTransition: false
 	})
 	let timeoutId = null;
 
 	const handleMenu = (menuName) => {
-		if (menuName === "reactMenuOn" || menuName === "uiMenuOn") {
+		if (menuName === "reactMenuOn" || menuName === "uiMenuOn" || menuName === "htmlMenuOn") {
 			if (timeoutId) {
 				clearTimeout(timeoutId);
 			}
@@ -21,7 +23,7 @@ const Nav = () => {
 				[menuName]: true,
 				[menuName.replace("MenuOn", "MenuFadeTransition")]: true
 			}));
-		} else if (menuName === "reactMenuFadeTransition" || menuName === "uiMenuFadeTransition") {
+		} else if (menuName === "reactMenuFadeTransition" || menuName === "uiMenuFadeTransition" || menuName === "htmlMenuFadeTransition") {
 			setMenuState(prevState => ({
 				...prevState,
 				[menuName]: false
@@ -62,15 +64,15 @@ const Nav = () => {
 										<li className='react-submenu__nav--item'>Forms with Refs</li>
 										<li className='react-submenu__header2'>
 											Form Libraries
-											<ul className='react-submenu-2__nav'>
-												<li className='react-submenu__nav--item'>React Hook Form</li>
-												<li className='react-submenu__nav--item'>Formik</li>
-												<li className='react-submenu__nav--item'>Yup</li>
-												<li className='react-submenu__nav--item'>React Select</li>
-												<li className='react-submenu__nav--item'>React Datepicker</li>
-												<li className='react-submenu__nav--item'>React Timepicker</li>
-											</ul>
 										</li>
+										<ul className='react-submenu-2__nav'>
+											<li className='react-submenu__nav--item'>React Hook Form</li>
+											<li className='react-submenu__nav--item'>Formik</li>
+											<li className='react-submenu__nav--item'>Yup</li>
+											<li className='react-submenu__nav--item'>React Select</li>
+											<li className='react-submenu__nav--item'>React Datepicker</li>
+											<li className='react-submenu__nav--item'>React Timepicker</li>
+										</ul>
 									</ul>
 								</li>
 								<li className='react-submenu__header'>
@@ -131,10 +133,34 @@ const Nav = () => {
 							</ul>
 						)}
 					</li>
-					<li className='nav__item'>
-						<NavLink to="/tables" className='nav__item-link'>
-							Tables
+					<li className='nav__item' onMouseEnter={() => handleMenu("htmlMenuOn")} onMouseLeave={() => handleMenu("htmlMenuFadeTransition")}>
+						<NavLink href="" className={`nav__item-link ${menuState.htmlMenuOn ? "hover-menu-item" : ""} `}>
+							HTML & JavaScript
 						</NavLink>
+						{menuState.htmlMenuOn && (
+							<ul className={`ui-submenu ${menuState.htmlMenuFadeTransition ? "fade-in" : "fade-out"}`} onMouseEnter={() => handleMenu("htmlMenuOn")} onMouseLeave={() => handleMenu("htmlMenuFadeTransition")}>
+								<li className='ui-submenu__item'>
+									<NavLink to="/tables">
+										Tables
+									</NavLink>
+								</li>
+								<li className='ui-submenu__item'>
+									<NavLink to="/forms">
+										Forms
+									</NavLink>
+								</li>
+								<li className='ui-submenu__item'>
+									<NavLink to="/classes">
+										JS Classes
+									</NavLink>
+								</li>
+								<li className='ui-submenu__item'>
+									<NavLink to="/linkedlists">
+										Linked Lists
+									</NavLink>
+								</li>
+							</ul>
+						)}
 					</li>
 					<li className='nav__item'>
 						<NavLink to="/code-practice" className='nav__item-link'>
