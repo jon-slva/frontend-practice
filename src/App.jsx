@@ -1,5 +1,3 @@
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.scss'
 import Home from './pages/Home/Home'
@@ -12,6 +10,7 @@ import CodePractice from './pages/CodePractice/CodePractice'
 import FlushSync from './pages/Flushsync/Flushsync'
 import JsClasses from './pages/JsClasses/JsClasses'
 import LinkedLists from './pages/LinkedLists/LinkedLists'
+import TodoList from './pages/TodoList/TodoList'
 
 
 function App() {
@@ -25,6 +24,7 @@ function App() {
 					<Route path="/apis-and-promises" element={<ApisAndPromises />} />
 					<Route path="/react" element={<ApisAndPromises />} />
 					<Route path="/react/state-misc/flushsync" element={<FlushSync />} />
+					<Route path="/react/state-misc/todo-list" element={<TodoList />} />
 					<Route path="/tables" element={<Tables />} />
 					<Route path="/forms" element={<Forms />} />
 					<Route path="/classes" element={<JsClasses />} />

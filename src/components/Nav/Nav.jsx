@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
-import { NavLink, Link } from 'react-router-dom'
+import { useState } from 'react'
+import { NavLink } from 'react-router-dom'
 import './Nav.scss'
 
 const Nav = () => {
@@ -107,8 +107,15 @@ const Nav = () => {
 								<li className='react-submenu__header'>
 									State & Misc
 									<ul className='react-submenu__nav'>
-										<li className='react-submenu__nav--item'><NavLink to={"/react/state-misc/flushsync"}>flushSync </NavLink></li>
+										<li className='react-submenu__nav--item'><NavLink to={"/react/state-misc/flushsync "}>flushSync </NavLink></li>
 										{/* <li className='react-submenu__nav--item'>Lazy Loading</li> */}
+									</ul>
+								</li>
+								<li className='react-submenu__header'>
+									React Practice
+									<ul className='react-submenu__nav'>
+										<li className='react-submenu__nav--item'><NavLink to={"/react/state-misc/todo-list"}>Todo List </NavLink></li>
+
 									</ul>
 								</li>
 							</ul>
