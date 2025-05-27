@@ -96,13 +96,13 @@ const Nav = () => {
 										<li className='react-submenu__nav--item'>UseLocation</li>
 										<li className='react-submenu__nav--item'>React Router Native</li>
 									</ul>
-									<li className='react-submenu__header'>
+									<ul className='react-submenu__header'>
 										Loading
 										<ul className='react-submenu__nav'>
 											<li className='react-submenu__nav--item'>Suspense</li>
 											<li className='react-submenu__nav--item'>Lazy Loading</li>
 										</ul>
-									</li>
+									</ul>
 								</li>
 								<li className='react-submenu__header'>
 									State & Misc

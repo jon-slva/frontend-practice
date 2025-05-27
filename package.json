@@ -23,6 +23,7 @@
 		"axios": "^1.6.8",
 		"dotenv": "^16.4.5",
 		"konva": "^9.3.6",
+		"prettier": "^3.5.3",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"react-hook-form": "^7.51.2",
