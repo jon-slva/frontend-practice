@@ -3,6 +3,9 @@ import axios from 'axios';
 import { useEffect, useState, Suspense, lazy } from 'react';
 import apiCards from '../../data/api_type_cards.json';
 const LazyRow = lazy(() => import('../../components/LazyRow/LazyRow'));
+import Prism from 'prismjs'
+import 'prismjs/components/prism-javascript'        // ensure JS grammar is loaded
+
 
 const VITE_NASA_API_KEY = import.meta.env.VITE_NASA_API_KEY;
 
@@ -38,7 +41,61 @@ const ApisAndPromises = () => {
 
 	}, [])
 
+	
+	const yourCodeString = `
+// -------------------------
+// 1. Axios (Promise-based)
+// -------------------------
+function fetchDataWithAxios() {
+  axios
+    .get("https://api.publicAndPromises.org/")
+    .then(response => {
+      console.log("Axios (Promise)", response.data);
+      // set your state here
+    })
+    .catch(error => console.error(error));
+}
 
+// ---------------------------------
+// 2. Axios (async/await + try/catch)
+// ---------------------------------
+async function fetchDataWithAxiosAsync() {
+  try {
+    const response = await axios.get("https://api.publicAndPromises.org/");
+    console.log("Axios (Async/Await)", response.data);
+    // set your state here
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// ----------------------------
+// 3. Fetch API (Promise-based)
+// ----------------------------
+function fetchDataWithFetch() {
+  fetch("https://api.publicAndPromises.org/")
+    .then(response => response.json())
+    .then(data => {
+      console.log("Fetch (Promise)", data);
+      // set your state here
+    })
+    .catch(error => console.error(error));
+}
+
+// ---------------------------------------
+// 4. Fetch API (async/await + try/catch)
+// ---------------------------------------
+async function fetchDataWithFetchAsync() {
+  try {
+    const response = await fetch("https://api.publicAndPromises.org/");
+    const data = await response.json();
+    console.log("Fetch (Async/Await)", data);
+    // set your state here
+  } catch (error) {
+    console.error(error);
+  }
+}
+    `
 
 	return (
 		<main>
@@ -91,7 +148,44 @@ const ApisAndPromises = () => {
 				</>
 			}
 
-			<h2>Here is some data from NASA's database on Near Earth Objects</h2>
+			<div
+				style={{
+					width: "100%",
+					display: 'flex',
+					alignItems: "center",
+					justifyContent: "center"
+				}}
+			>
+				<pre
+					style={{
+						backgroundColor: "#000",
+						padding: "16px",
+						borderRadius: "4px",
+						overflowX: "auto",
+						textAlign: "left",
+						width: "fit-content",
+						justifyItems: "center"
+					}}
+				>
+					<code
+						className="language-javascript"
+						style={{
+							whiteSpace: "pre-wrap",
+							fontFamily: "monospace",
+							textAlign: "left",
+						}}
+						dangerouslySetInnerHTML={{
+							__html: Prism.highlight(
+								yourCodeString,
+								Prism.languages.javascript,
+								"javascript"
+							),
+						}}
+					/>
+				</pre>
+			</div>
+
+			<h2>Here is some data from NASAs database on Near Earth Objects</h2>
 
 
 			<h3>{axiosData.element_count}</h3>

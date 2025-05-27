@@ -5,13 +5,15 @@
 				"name": "Fetch API",
 				"subtitle": "with then/catch",
 				"image": "src/assets/images/api_fetch_no_async.png",
-				"description": "Fetch API with then/catch handles Promises."
+				"description": "Fetch API with then/catch handles Promises.",
+				"code": "function fetchDataWithFetch() {\\n  fetch(\\\"https://api.publicAndPromises.org/\\\")\\n    .then(response => response.json())\\n    .then(data => {\\n      console.log(\\\"Fetch (Promise)\\\", data);\\n      // set your state here\\n    })\\n    .catch(error => console.error(error));\\n}"
 			},
 			{
 				"name": "Axios",
 				"subtitle": "with then/catch",
 				"image": "src/assets/images/api_axios_no_async.png",
-				"description": "Axios with then/catch handles Promises."
+				"description": "Axios with then/catch handles Promises.",
+				"code": "function fetchDataWithAxios() {\\n  axios\\n    .get(\\\"https://api.publicAndPromises.org/\\\")\\n    .then(response => {\\n      console.log(\\\"Axios (Promise)\\\", response.data);\\n      // set your state here\\n    })\\n    .catch(error => console.error(error));\\n}"
 			}
 		],
 		"categoryTitle": "Api Requests with then/catch"
@@ -22,13 +24,15 @@
 				"name": "Fetch API",
 				"subtitle": "with async/await",
 				"image": "src/assets/images/api_fetch_with_async.png",
-				"description": "Fetch API with async/await for cleaner code."
+				"description": "Fetch API with async/await for cleaner code.",
+				"code": "async function fetchDataWithFetchAsync() {\\n  try {\\n    const response = await fetch(\\\"https://api.publicAndPromises.org/\\\");\\n    const data = await response.json();\\n    console.log(\\\"Fetch (Async/Await)\\\", data);\\n    // set your state here\\n  } catch (error) {\\n    console.error(error);\\n  }\\n}"
 			},
 			{
 				"name": "Axios",
 				"subtitle": "with async/await",
 				"image": "src/assets/images/api_axios_with_async.png",
-				"description": "Axios with async/await for cleaner code."
+				"description": "Axios with async/await for cleaner code.",
+				"code": "async function fetchDataWithAxiosAsync() {\\n  try {\\n    const response = await axios.get(\\\"https://api.publicAndPromises.org/\\\");\\n    console.log(\\\"Axios (Async/Await)\\\", response.data);\\n    // set your state here\\n  } catch (error) {\\n    console.error(error);\\n  }\\n}"
 			}
 		],
 		"categoryTitle": "Api Requests with async/await"
