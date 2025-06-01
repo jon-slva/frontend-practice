@@ -143,7 +143,7 @@ console.log(myLibrary.findBook("1984")); // Should log undefined or null
 
 		</main>
 	);
-};
+}
 
 
 // first practice
@@ -176,8 +176,8 @@ class Band {
 
 let myBand = new Band("drummer", "singer", "guitarist", "bassist")
 
-console.log(myBand) // { "bandMembers": [ "drummer", "singer", "guitarist", "bassist" ] }
-console.log(myBand.thisIs()) // My band has a drummer, singer, guitarist, and a bassist!
+// console.log(myBand) // { "bandMembers": [ "drummer", "singer", "guitarist", "bassist" ] }
+// console.log(myBand.thisIs()) // My band has a drummer, singer, guitarist, and a bassist!
 
 
 
@@ -230,9 +230,9 @@ let book2 = new Book("1984", "George Orwell", 328);
 // console.log(book2.info())
 myLibrary.addBook(book1);
 myLibrary.addBook(book2);
-console.log(myLibrary)
-console.log(myLibrary.findBook("1984")); // Should log the book object
-console.log(myLibrary.findBook("To Kill a Mockingbird").info()); // Should log "To Kill a Mockingbird by Harper Lee, 281 pages"
+// console.log(myLibrary)
+// console.log(myLibrary.findBook("1984")); // Should log the book object
+// console.log(myLibrary.findBook("To Kill a Mockingbird").info()); // Should log "To Kill a Mockingbird by Harper Lee, 281 pages"
 
 myLibrary.removeBook("1984");
-console.log(myLibrary.findBook("1984")); // Should log undefined or null
+// console.log(myLibrary.findBook("1984")); // Should log undefined or null

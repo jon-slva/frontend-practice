@@ -26,7 +26,7 @@ const Flushsync = () => {
 				Increment count ({count})
 			</button>
 
-			<p>you'll notice, the console log is 1 value behind what is shown on the front end.</p>
+			<p>you&apos;ll notice, the console log is 1 value behind what is shown on the front end.</p>
 			<p>this is because the state updates in react are asynchronous.</p>
 
 			<h2>FlushSync Count</h2>
