@@ -21,7 +21,9 @@ const ToDoList: React.FC = () => {
   const [toDoListData, setToDoListData] = useState<Task[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [newTask, setNewTask] = useState<string>("");
+  //
 
+  // API REQUESTS ==========
   const fetchData = async () => {
     try {
       const response = await axios.get(`${API_URL}/todo`);
@@ -47,6 +49,7 @@ const ToDoList: React.FC = () => {
       console.error("Could not add Task", error);
     }
   };
+
   const deleteData = async (id: number): Promise<void> => {
     try {
       const response = await axios.delete(`${API_URL}/todo/${id}`);
@@ -59,6 +62,26 @@ const ToDoList: React.FC = () => {
     }
   };
 
+  const putData = async (id: number): Promise<void> => {
+    const taskToUpdate = toDoListData.find((task) => task.id === id);
+    if (!taskToUpdate) return;
+
+    const updatedTask = { ...taskToUpdate, completed: !taskToUpdate.completed };
+
+    try {
+      const response = await axios.put(`${API_URL}/todo/${id}`, updatedTask);
+      console.log("Task Successfully Updated", response.data);
+
+      const updatedList: Task[] = toDoListData.map((task) => {
+        return task.id === id ? { ...task, completed: !task.completed } : task;
+      });
+      setToDoListData(updatedList);
+    } catch (error) {
+      console.log("Could Not Update Task", error);
+    }
+  };
+
+  // EVENT HANLDERS ==========
   const addTaskHandler = () => {
     const formattedTask: AddedTask = {
       title: newTask,
@@ -72,10 +95,12 @@ const ToDoList: React.FC = () => {
     deleteData(id);
   };
 
+  const markDoneHandler = (id: number) => {
+    putData(id);
+  };
+
   useEffect(() => {
-    setTimeout(() => {
-      fetchData();
-    }, 3000);
+    fetchData();
   }, []);
 
   return (
@@ -109,7 +134,11 @@ const ToDoList: React.FC = () => {
                   return (
                     <tr key={item.id}>
                       <td>{item.title}</td>
-                      <td>{item.completed ? "Done" : "Incomplete"}</td>
+                      <td>
+                        <button onClick={() => markDoneHandler(item.id)}>
+                          {item.completed ? "☑︎" : "☐"}
+                        </button>
+                      </td>
                       <td>{item.dueDate}</td>
                       <td>
                         <button onClick={() => deleteTaskHandler(item.id)}>
