@@ -36,7 +36,7 @@ const ToDoList: React.FC = () => {
     }
   };
 
-  const postData = async (task: AddedTask) => {
+  const postData = async (task: AddedTask): Promise<void> => {
     try {
       console.log(task);
       const response = await axios.post(`${API_URL}/todo`, task);
@@ -47,6 +47,17 @@ const ToDoList: React.FC = () => {
       console.error("Could not add Task", error);
     }
   };
+  const deleteData = async (id: number): Promise<void> => {
+    try {
+      const response = await axios.delete(`${API_URL}/todo/${id}`);
+      console.log("Task Successfully Deleted", response.data);
+
+      const updatedList: Task[] = toDoListData.filter((task) => task.id !== id);
+      setToDoListData(updatedList);
+    } catch (error) {
+      console.log("Could Not Delete Task", error);
+    }
+  };
 
   const addTaskHandler = () => {
     const formattedTask: AddedTask = {
@@ -55,6 +66,10 @@ const ToDoList: React.FC = () => {
       completed: false,
     };
     postData(formattedTask);
+  };
+
+  const deleteTaskHandler = (id: number) => {
+    deleteData(id);
   };
 
   useEffect(() => {
@@ -96,6 +111,11 @@ const ToDoList: React.FC = () => {
                       <td>{item.title}</td>
                       <td>{item.completed ? "Done" : "Incomplete"}</td>
                       <td>{item.dueDate}</td>
+                      <td>
+                        <button onClick={() => deleteTaskHandler(item.id)}>
+                          Delete
+                        </button>
+                      </td>
                     </tr>
                   );
                 })}
