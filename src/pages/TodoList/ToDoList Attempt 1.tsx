@@ -112,7 +112,7 @@ const ToDoList: React.FC = () => {
       completed: false,
       dueDate: new Date().toISOString(),
     };
-    addTask(newTask);
+    await addTask(newTask);
   };
 
   const toggleCompleteHandler = (id: number) => {
