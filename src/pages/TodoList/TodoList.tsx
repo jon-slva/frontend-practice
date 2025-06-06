@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { Task, NewTask } from "./types EXAMPLE";
 
 const API_URL = import.meta.env.VITE_BACKEND; // "http://localhost:3000/api"
@@ -49,10 +49,15 @@ const ToDoList: React.FC = () => {
   };
 
   const putData = async (id: number): Promise<void> => {
-    const taskToUpdate = toDoListData.find((task) => task.id === id);
+    const taskToUpdate: Task | undefined = toDoListData.find(
+      (task) => task.id === id,
+    );
     if (!taskToUpdate) return;
 
-    const updatedTask = { ...taskToUpdate, completed: !taskToUpdate.completed };
+    const updatedTask: Task = {
+      ...taskToUpdate,
+      completed: !taskToUpdate.completed,
+    };
 
     try {
       const response = await axios.put(`${API_URL}/todo/${id}`, updatedTask);
@@ -125,7 +130,7 @@ const ToDoList: React.FC = () => {
                           {item.completed ? "☑︎" : "☐"}
                         </button>
                       </td>
-                      <td>{item.dueDate}</td>
+                      <td>{new Date(item.dueDate).toLocaleDateString()}</td>
                       <td>
                         <button onClick={() => deleteTaskHandler(item.id)}>
                           Delete
