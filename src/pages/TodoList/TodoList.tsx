@@ -13,7 +13,7 @@ const ToDoList: React.FC = () => {
   // API REQUESTS ==========
   const fetchData = async () => {
     try {
-      const response = await axios.get(`${API_URL}/todo`);
+      const response = await axios.get<Task[]>(`${API_URL}/todo`);
       console.log(
         "Axios async/await with arrow function data: ",
         response.data,
@@ -27,9 +27,9 @@ const ToDoList: React.FC = () => {
 
   const postData = async (task: NewTask): Promise<void> => {
     try {
-      const response = await axios.post(`${API_URL}/todo`, task);
+      const response = await axios.post<Task>(`${API_URL}/todo`, task);
       console.log("New Task Successfully Added", response.data);
-      setToDoListData([...toDoListData, response.data]);
+      setToDoListData((prev) => [...prev, response.data]);
       setEnteredTask("");
     } catch (error) {
       console.error("Could not add Task", error);
@@ -38,7 +38,7 @@ const ToDoList: React.FC = () => {
 
   const deleteData = async (id: number): Promise<void> => {
     try {
-      const response = await axios.delete(`${API_URL}/todo/${id}`);
+      const response = await axios.delete<Task>(`${API_URL}/todo/${id}`);
       console.log("Task Successfully Deleted", response.data);
 
       const updatedList: Task[] = toDoListData.filter((task) => task.id !== id);
