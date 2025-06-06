@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { Task, NewTask } from "./types EXAMPLE";
 
 const API_URL = import.meta.env.VITE_BACKEND; // "http://localhost:3000/api"
@@ -13,7 +13,9 @@ const ToDoList: React.FC = () => {
   // API REQUESTS ==========
   const fetchData = async () => {
     try {
-      const response = await axios.get<Task[]>(`${API_URL}/todo`);
+      const response: AxiosResponse<Task[]> = await axios.get<Task[]>(
+        `${API_URL}/todo`,
+      );
       console.log(
         "Axios async/await with arrow function data: ",
         response.data,
@@ -27,7 +29,10 @@ const ToDoList: React.FC = () => {
 
   const postData = async (task: NewTask): Promise<void> => {
     try {
-      const response = await axios.post<Task>(`${API_URL}/todo`, task);
+      const response: AxiosResponse<Task> = await axios.post<Task>(
+        `${API_URL}/todo`,
+        task,
+      );
       console.log("New Task Successfully Added", response.data);
       setToDoListData((prev) => [...prev, response.data]);
       setEnteredTask("");
@@ -38,7 +43,9 @@ const ToDoList: React.FC = () => {
 
   const deleteData = async (id: number): Promise<void> => {
     try {
-      const response = await axios.delete<Task>(`${API_URL}/todo/${id}`);
+      const response: AxiosResponse<Task> = await axios.delete<Task>(
+        `${API_URL}/todo/${id}`,
+      );
       console.log("Task Successfully Deleted", response.data);
 
       const updatedList: Task[] = toDoListData.filter((task) => task.id !== id);
@@ -49,13 +56,18 @@ const ToDoList: React.FC = () => {
   };
 
   const putData = async (id: number): Promise<void> => {
-    const taskToUpdate = toDoListData.find((task) => task.id === id);
+    const taskToUpdate: Task | undefined = toDoListData.find(
+      (task) => task.id === id,
+    );
     if (!taskToUpdate) return;
 
     const updatedTask = { ...taskToUpdate, completed: !taskToUpdate.completed };
 
     try {
-      const response = await axios.put(`${API_URL}/todo/${id}`, updatedTask);
+      const response: AxiosResponse<Task> = await axios.put(
+        `${API_URL}/todo/${id}`,
+        updatedTask,
+      );
       console.log("Task Successfully Updated", response.data);
 
       const updatedList: Task[] = toDoListData.map((task) => {
