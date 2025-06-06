@@ -71,7 +71,7 @@ const ToDoList: React.FC = () => {
   const addTaskHandler = () => {
     const formattedTask: NewTask = {
       title: enteredTask,
-      dueDate: new Date().toISOString(),
+      dueDate: "",
       completed: false,
     };
     postData(formattedTask);
@@ -125,7 +125,7 @@ const ToDoList: React.FC = () => {
                           {item.completed ? "☑︎" : "☐"}
                         </button>
                       </td>
-                      <td>{item.dueDate}</td>
+                      <td>{new Date(item.dueDate).toLocaleDateString()}</td>
                       <td>
                         <button onClick={() => deleteTaskHandler(item.id)}>
                           Delete
