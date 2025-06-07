@@ -22,4 +22,4 @@
 //    • Prevent adding empty titles (disable button or ignore).
 //
 // Build in this exact order. Once step 1 works, move on to step 2, and so on.
-// ------------------------------------------------------------------
+// -------------------------------------------------------------------
