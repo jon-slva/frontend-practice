@@ -12,6 +12,7 @@ import JsClasses from "./pages/JsClasses/JsClasses";
 import LinkedLists from "./pages/LinkedLists/LinkedLists";
 import ToDoList from "./pages/ToDoList/ToDoList";
 import { createContext, useState } from "react";
+import BlankCanvas from "./pages/BlankCanvas/BlankCanvas";
 
 type ExampleContextType = {
   globalData: any;
@@ -38,6 +39,10 @@ function App() {
             <Route path="/react" element={<ApisAndPromises />} />
             <Route path="/react/state-misc/flushsync" element={<FlushSync />} />
             <Route path="/react/state-misc/todo-list" element={<ToDoList />} />
+            <Route
+              path="/react/state-misc/blank-canvas"
+              element={<BlankCanvas />}
+            />
             <Route path="/tables" element={<Tables />} />
             <Route path="/forms" element={<Forms />} />
             <Route path="/classes" element={<JsClasses />} />

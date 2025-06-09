@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { ExampleContext } from "../../App";
+
 // --------------------- INTERVIEW INSTRUCTIONS ---------------------
 
 // ------------------------------------------------------------------
@@ -9,7 +10,6 @@ const ToDoList = () => {
   if (!receivedContext) throw new Error("ExampleContext not found");
   const { globalData, setGlobalData } = receivedContext;
 
-  console.log(globalData);
   return <div>ToDoList</div>;
 };
 
