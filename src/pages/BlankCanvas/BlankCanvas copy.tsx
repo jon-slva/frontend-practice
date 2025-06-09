@@ -5,7 +5,7 @@
 // Requirements:
 // - Fetch all bugs from GET /bugs on mount X
 // - Display them in a list or table X
-// - Allow adding a new bug via form inputs (title, description, status, priority)X
+// - Allow adding a new bug via form inputs (title, description, status, priority)
 // - Allow editing an existing bug (in-place or via a modal)
 // - Allow deleting a bug
 // - Allow changing status or priority interactively
@@ -26,7 +26,7 @@ type Bug = {
   id: number;
   title: string;
   description: string;
-  status: "open" | "closed" | "in progress";
+  status: "open" | "closed" | "";
   priority: "low" | "medium" | "high" | "";
   createdAt: Date;
   updatedAt: Date;
@@ -35,7 +35,7 @@ type Bug = {
 type NewBug = {
   title: string;
   description: string;
-  status: "open" | "closed" | "in progress" | "";
+  status: "open" | "closed" | "";
   priority?: "low" | "medium" | "high" | "";
 };
 
@@ -63,41 +63,14 @@ const BlankCanvas = () => {
     }
   };
 
-  const postData = async (newBug: NewBug) => {
-    try {
-      const response: AxiosResponse<Bug> = await axios.post(
-        `${API_URL}/api/bugs`,
-        newBug,
-      );
-      console.log("Successfully posted new Bug", response.data);
-      // Now I need to add it to the state
-      setBugData((prev) => [...prev, response.data]);
-      setFormData({
-        title: "",
-        description: "",
-        status: "",
-        priority: "",
-      });
-    } catch (error) {
-      console.error(`Unable to post new Bug`, error);
-    }
-  };
-
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    // prevent default action
     e.preventDefault();
-
-    // Make Post request with formData
-    postData(formData);
   };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) => {
     const { name, value } = e.target;
-    // confirm we are getting the right behavior
-    // console.log(name, value);
-    // Set state with change
     setFormData((prev) => ({
       ...prev,
       [name]: value,
@@ -108,78 +81,71 @@ const BlankCanvas = () => {
     fetchData();
   }, []);
 
-  // Prevent Enter key from submitting the form when inside an input
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLFormElement>) => {
-    if (e.key === "Enter") {
-      e.preventDefault();
-    }
-  };
-
   return (
     <>
       <h2>BlankCanvas</h2>
-      <form onSubmit={(e) => handleSubmit(e)} onKeyDown={handleKeyDown}>
-        <table>
+      <form
+        onSubmit={(e) => handleSubmit(e)}
+        style={{ width: "100%", height: "60px" }}
+      >
+        <table style={{ margin: "14px auto", height: "40px" }}>
           <tbody>
-            <tr>
-              <td>
+            <tr style={{ display: "flex", alignItems: "center" }}>
+              <td style={{ width: "30%" }}>
                 <input
                   type="text"
-                  name="title"
-                  value={formData.title}
-                  placeholder="Enter Title of bug"
+                  placeholder="Enter Title"
                   required
+                  style={{ width: "100%" }}
                   onChange={handleChange}
                 />
               </td>
-              <td>
+              <td style={{ width: "50%" }}>
                 <input
                   type="text"
-                  name="description"
-                  value={formData.description}
-                  placeholder="Enter Description of bug"
+                  placeholder="Enter Description"
                   required
+                  style={{ width: "100%" }}
                   onChange={handleChange}
                 />
               </td>
               <td>
                 <select
                   name="status"
-                  value={formData.status}
-                  required
+                  id="status"
+                  defaultValue="none"
                   onChange={handleChange}
                 >
-                  <option value="" disabled>
+                  <option value="none" disabled>
                     Select Status
                   </option>
                   <option value="open">Open</option>
                   <option value="closed">Closed</option>
-                  <option value="in progress">In Progress</option>
                 </select>
               </td>
               <td>
                 <select
                   name="priority"
-                  value={formData.priority}
+                  id="priority"
+                  defaultValue="none"
                   onChange={handleChange}
                 >
-                  <option value="" disabled>
+                  <option value="none" disabled>
                     Select Priority
                   </option>
                   <option value="low">Low</option>
-                  <option value="medium">Medium</option>
+                  <option value="medium">Med</option>
                   <option value="high">High</option>
                 </select>
               </td>
               <td>
-                <button type="submit">Add New Bug</button>
+                <button type="submit">Add Bug</button>
               </td>
             </tr>
           </tbody>
         </table>
       </form>
-
-      <table>
+      <table style={{ margin: "14px auto" }}>
         <thead>
           <tr>
             <th>Title</th>
