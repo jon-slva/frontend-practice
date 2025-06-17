@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { ExampleContext } from "../../App";
 // --------------------- INTERVIEW INSTRUCTIONS ---------------------
 // Follow these steps in order:
 // 1. Fetch and display existing todos:
@@ -23,3 +25,14 @@
 //
 // Build in this exact order. Once step 1 works, move on to step 2, and so on.
 // ------------------------------------------------------------------
+
+const ToDoList = () => {
+  const receivedContext = useContext(ExampleContext);
+  if (!receivedContext) throw new Error("ExampleContext not found");
+  const { globalData, setGlobalData } = receivedContext;
+
+  console.log(globalData);
+  return <div>ToDoList</div>;
+};
+
+export default ToDoList;
