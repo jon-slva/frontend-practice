@@ -10,9 +10,9 @@ import CodePractice from "./pages/CodePractice/CodePractice";
 import FlushSync from "./pages/Flushsync/Flushsync";
 import JsClasses from "./pages/JsClasses/JsClasses";
 import LinkedLists from "./pages/LinkedLists/LinkedLists";
-import ToDoList from "./pages/ToDoList/ToDoList";
 import { createContext, useState } from "react";
 import BlankCanvas from "./pages/BlankCanvas/BlankCanvas";
+import ToDoList from "./pages/ToDoList/ToDoList";
 
 type ExampleContextType = {
   globalData: any;
