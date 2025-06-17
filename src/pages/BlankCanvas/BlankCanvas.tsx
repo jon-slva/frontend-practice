@@ -83,11 +83,30 @@ const BlankCanvas = () => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    // prevent default action
-    e.preventDefault();
+  const deleteData = async (bug: Bug) => {
+    try {
+      const response: AxiosResponse<Bug> = await axios.delete<Bug>(
+        `${API_URL}/api/bugs/${bug.id}`,
+      );
 
-    // Make Post request with formData
+      console.log({
+        message: "Successfully deleted data",
+        data: response.data,
+      });
+      // I can either find the index of the item to delete, and then create an updated array with that sliced out
+      // or I can create an updated array with .filter.
+
+      const updatedBugData = bugData.filter(
+        (bug) => bug.id !== response.data.id,
+      );
+      setBugData(updatedBugData);
+    } catch (error) {
+      console.error({ message: "Could not delete Bug", error: error });
+    }
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     postData(formData);
   };
 
@@ -113,6 +132,10 @@ const BlankCanvas = () => {
     if (e.key === "Enter") {
       e.preventDefault();
     }
+  };
+
+  const handleDelete = (bug: Bug) => {
+    deleteData(bug);
   };
 
   return (
@@ -209,7 +232,7 @@ const BlankCanvas = () => {
                   <td>{new Date(bug.createdAt).toLocaleDateString()}</td>
                   <td>{new Date(bug.updatedAt).toLocaleDateString()}</td>
                   <td>
-                    <button>Delete</button>
+                    <button onClick={() => handleDelete(bug)}>Delete</button>
                   </td>
                 </tr>
               );
