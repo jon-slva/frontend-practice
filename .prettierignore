@@ -27,3 +27,6 @@ out
 .next
 .cache
 tmp
+
+# Ignore specific Files:
+App.tsx
