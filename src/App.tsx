@@ -39,10 +39,7 @@ function App() {
             <Route path="/react" element={<ApisAndPromises />} />
             <Route path="/react/state-misc/flushsync" element={<FlushSync />} />
             <Route path="/react/state-misc/todo-list" element={<ToDoList />} />
-            <Route
-              path="/react/state-misc/blank-canvas"
-              element={<BlankCanvas />}
-            />
+            <Route path="/react/state-misc/blank-canvas" element={<BlankCanvas />} />
             <Route path="/tables" element={<Tables />} />
             <Route path="/forms" element={<Forms />} />
             <Route path="/classes" element={<JsClasses />} />
