@@ -1,6 +1,7 @@
 import "./ApisAndPromises.scss";
 import axios from "axios";
-import { useEffect, useState, Suspense, lazy } from "react";
+import { useEffect, useState, Suspense, lazy, useCallback } from "react";
+import { CardData, NasaNEOData, CardType } from "./types";
 import apiCards from "../../data/api_type_cards.json";
 const LazyRow = lazy(() => import("../../components/LazyRow/LazyRow"));
 import Prism from "prismjs";
@@ -8,34 +9,38 @@ import "prismjs/components/prism-javascript"; // ensure JS grammar is loaded
 
 const VITE_NASA_API_KEY = import.meta.env.VITE_NASA_API_KEY;
 
-const thenCatchCards = apiCards[0].thenCatchCards;
-const asyncAwaitCards = apiCards[1].asyncAwaitCards;
-const preEs6Cards = apiCards[2].preEs6Cards;
+const thenCatchCards: CardData[] = apiCards[0].thenCatchCards ?? [];
+const asyncAwaitCards: CardData[] = apiCards[1].asyncAwaitCards ?? [];
+const preEs6Cards: CardData[] = apiCards[2].preEs6Cards ?? [];
 
 const ApisAndPromises = () => {
-  const [axiosData, setAxiosData] = useState({
+  const [axiosData, setAxiosData] = useState<NasaNEOData>({
     links: {},
     element_count: "",
     near_earth_objects: {},
   });
-  const [cardToggle, setCardToggle] = useState(false);
+  const [cardToggle, setCardToggle] = useState<CardType>("async/await");
+
+  // ENDPOINTS
+  const fetchData = useCallback(async () => {
+    // Memoizing this function is not offering any benefit as it's not passed down via props, & not in a dependency, & not creating multiple effects. But this is how you would do it.
+    try {
+      const { data } = await axios.get(
+        `https://api.nasa.gov/neo/rest/v1/feed?start_date=2024-04-01&end_date=2024-04-08&api_key=${VITE_NASA_API_KEY}`,
+      );
+      // console.log(data)
+      setAxiosData(data);
+      console.log(data.near_earth_objects);
+      // console.log(axiosData.element_count) // this doesnt even work because the useState data is still stale
+    } catch (error) {
+      console.error(error);
+    }
+  }, [setAxiosData, VITE_NASA_API_KEY]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const { data } = await axios.get(
-          `https://api.nasa.gov/neo/rest/v1/feed?start_date=2024-04-01&end_date=2024-04-08&api_key=${VITE_NASA_API_KEY}`,
-        );
-        // console.log(data)
-        setAxiosData(data);
-        console.log(data.near_earth_objects);
-        // console.log(axiosData.element_count) // this doesnt even work because the useState data is still stale
-      } catch (error) {
-        console.error(error);
-      }
-    };
+    // Fetch Near Earth Objects from NASA API
     fetchData();
-  }, []);
+  }, [fetchData]);
 
   const yourCodeString = `
 // -------------------------
