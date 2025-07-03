@@ -28,7 +28,6 @@ const ApisAndPromises: React.FC = () => {
       const { data } = await axios.get(
         `https://api.nasa.gov/neo/rest/v1/feed?start_date=2024-04-01&end_date=2024-04-08&api_key=${VITE_NASA_API_KEY}`,
       );
-      // console.log(data)
       setAxiosData(data);
       console.log(data.near_earth_objects);
       // console.log(axiosData.element_count) // this doesnt even work because the useState data is still stale
@@ -205,7 +204,6 @@ async function fetchDataWithFetchAsync() {
 
       <p
         style={{
-          // position: 'absolute',
           width: "100%",
           left: "0",
         }}
