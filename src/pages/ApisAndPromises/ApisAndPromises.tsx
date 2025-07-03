@@ -1,7 +1,7 @@
 import "./ApisAndPromises.scss";
 import axios from "axios";
 import { useEffect, useState, Suspense, lazy, useCallback } from "react";
-import { CardData, NasaNEOData, CardType } from "./types";
+import { CardData, NasaNEOData, CardType } from "../../types";
 import apiCards from "../../data/api_type_cards.json";
 const LazyRow = lazy(() => import("../../components/LazyRow/LazyRow"));
 import Prism from "prismjs";
@@ -13,7 +13,7 @@ const thenCatchCards: CardData[] = apiCards[0].thenCatchCards ?? [];
 const asyncAwaitCards: CardData[] = apiCards[1].asyncAwaitCards ?? [];
 const preEs6Cards: CardData[] = apiCards[2].preEs6Cards ?? [];
 
-const ApisAndPromises = () => {
+const ApisAndPromises: React.FC = () => {
   const [axiosData, setAxiosData] = useState<NasaNEOData>({
     links: {},
     element_count: "",
@@ -225,7 +225,13 @@ async function fetchDataWithFetchAsync() {
           </tr>
         </thead>
         <tbody>
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense
+            fallback={
+              <tr>
+                <td>Loading...</td>
+              </tr>
+            }
+          >
             <LazyRow axiosData={axiosData} />
           </Suspense>
         </tbody>
