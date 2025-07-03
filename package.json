@@ -24,6 +24,7 @@
 		"dotenv": "^16.4.5",
 		"konva": "^9.3.6",
 		"prettier": "^3.5.3",
+		"prismjs": "^1.30.0",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"react-hook-form": "^7.51.2",
@@ -33,6 +34,7 @@
 		"sass": "^1.72.0"
 	},
 	"devDependencies": {
+		"@types/prismjs": "^1.26.5",
 		"@types/react": "^18.3.22",
 		"@types/react-dom": "^18.3.7",
 		"@vitejs/plugin-react": "^4.2.1",
